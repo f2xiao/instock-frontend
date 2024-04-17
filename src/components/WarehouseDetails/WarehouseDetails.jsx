@@ -1,7 +1,7 @@
 import React from 'react';
 import "./WarehouseDetails.scss";
 import warehouseData from '../../data/01_warehouses.json'; 
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const WarehouseDetails = () => { 
     const warehouse = warehouseData[1]; 
@@ -9,9 +9,9 @@ const WarehouseDetails = () => {
         <div>
             <div className='details__top'>
                 <h1 className='details__title'>{warehouse.warehouse_name}</h1> 
-                <Link to='/edit'>
+                {/* <Link to='/edit'> */}
                     <div className='details__edit'>EDIT</div>
-                </Link>
+                {/* </Link> */}
             </div>
             <div className='detail__bottom'>
                 <div className='detail__address'>
