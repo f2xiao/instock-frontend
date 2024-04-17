@@ -1,17 +1,35 @@
-$color-text: #13182C;
-$color-cta: #2E66E5;
-$color-bg: #FFFFFF;
+$color-text: #13182c;
+$color-cta: #2e66e5;
+$color-bg: #ffffff;
 
-$color-text-secondary: #5C667E;
-$color-border: #BDC5D5;
+$color-text-secondary: #5c667e;
+$color-border: #bdc5d5;
 
 $color-bg-nav: #232940;
 $color-bg-cta-hover: #232940;
-$color-bg-page: #F7F8F9;
-$color-bg-cta: #F7F8F9;
+$color-bg-page: #f7f8f9;
+$color-bg-cta: #f7f8f9;
 
 $color-success: #158463;
-$color-error: #C94515;
+$color-error: #c94515;
+
+// Type Kit variables
+
+$h1-desktab-fontsize: 2.2rem;
+$h2-desktab-fontsize: 1.5rem;
+$h3-desktab-fontsize: 0.875rem;
+$h4-desktab-fontsize: 0.75rem;
+$p1-desktab-fontsize: 1rem;
+$p2-desktab-fontsize: 0.875rem;
+$p3-desktab-fontsize: 0.75rem;
+
+$h1-mobile-fontsize: 1.75rem;
+$h2-mobile-fontsize: 1.25rem;
+$h3-mobile-fontsize: 0.81rem;
+$h4-mobile-fontsize: 0.69rem;
+$p1-mobile-fontsize: 0.94rem;
+$p2-mobile-fontsize: 0.81rem;
+$p3-mobile-fontsize: 0.69rem;
 
 // padding: mobile, tablet, desktop
 $padding-m: 1rem;
