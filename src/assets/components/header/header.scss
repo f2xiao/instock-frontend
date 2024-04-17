@@ -21,6 +21,7 @@
       padding-bottom: 5.75rem;
       flex-direction: row;
       margin: 0 1%;
+      padding-top: 3.5rem;
     }
     @include desktop {
       margin: 0 8%;
@@ -82,5 +83,5 @@
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
