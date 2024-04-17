@@ -1,0 +1,25 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+
+.footer__text {
+  font-size: $p3-mobile-fontsize;
+  background-color: $color-bg-page;
+  margin: 0 auto;
+  text-align: center;
+  vertical-align: center;
+  color: $color-border;
+  padding: $padding-m;
+  width: stretch;
+  position: absolute;
+  bottom: -1182px; /*change this to whatever value works for you*/
+
+  @include tablet {
+    bottom: -325px; /*change this to whatever value works for you*/
+    font-size: $p3-desktab-fontsize;
+  }
+  @include desktop {
+    bottom: -205px; /*change this to whatever value works for you*/
+  }
+}
