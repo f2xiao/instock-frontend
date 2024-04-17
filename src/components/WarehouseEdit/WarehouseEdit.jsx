@@ -1,8 +1,8 @@
-import "./WarehouseEdit.scss"
 import React, { useState } from 'react';
-import warehouseData from"../../data/01_warehouses.json"
+import "./WarehouseEdit.scss";
+import warehouseData from "../../data/01_warehouses.json";
 
-    const WarehouseEdit=()=>{
+const WarehouseEdit = () => {
     const [warehouseDetails, setWarehouseDetails] = useState({
         warehouseName: '',
         address: '',
@@ -47,73 +47,113 @@ import warehouseData from"../../data/01_warehouses.json"
             <form onSubmit={handleSubmit}>
                 <section>
                     <h3>Warehouse Details</h3>
-                    <input
-                        type="text"
-                        name="warehouseName"
-                        placeholder="Warehouse Name"
-                        value={warehouseDetails.warehouseName}
-                        onChange={handleWarehouseChange}
-                    />
-                    <input
-                        type="text"
-                        name="address"
-                        placeholder="Address"
-                        value={warehouseDetails.address}
-                        onChange={handleWarehouseChange}
-                    />
-                    <input
-                        type="text"
-                        name="city"
-                        placeholder="City"
-                        value={warehouseDetails.city}
-                        onChange={handleWarehouseChange}
-                    />
-                    <input
-                        type="text"
-                        name="country"
-                        placeholder="Country"
-                        value={warehouseDetails.country}
-                        onChange={handleWarehouseChange}
-                    />
+
+                    <div>
+                        <label>
+                            Warehouse Name:
+                        </label><br />
+                        <input
+                            type="text"
+                            name="warehouseName"
+                            value={warehouseDetails.warehouseName}
+                            onChange={handleWarehouseChange}
+                        />
+                    </div>
+
+                    <div>
+                        <label>
+                        Street Address:</label><br />
+                        <input
+                            type="text"
+                            name="address"
+                            value={warehouseDetails.address}
+                            onChange={handleWarehouseChange}
+                        />
+                    </div>
+
+
+                   <div>
+                        <label>
+                            City:
+                        </label><br />
+                        <input
+                            type="text"
+                            name="city"
+                            value={warehouseDetails.city}
+                            onChange={handleWarehouseChange}
+                        />
+                </div>
+                    
+                    <div>
+                        <label>
+                            Country:
+                        </label><br />
+                        <input
+                            type="text"
+                            name="country"
+                            value={warehouseDetails.country}
+                            onChange={handleWarehouseChange}
+                        />
+                    </div>
+                    
                 </section>
 
                 <section>
                     <h3>Contact Details</h3>
-                    <input
-                        type="text"
-                        name="contactName"
-                        placeholder="Contact Name"
-                        value={contactDetails.contactName}
-                        onChange={handleContactChange}
-                    />
-                    <input
-                        type="text"
-                        name="contactPosition"
-                        placeholder="Contact Position"
-                        value={contactDetails.contactPosition}
-                        onChange={handleContactChange}
-                    />
-                    <input
-                        type="text"
-                        name="contactPhone"
-                        placeholder="Contact Phone"
-                        value={contactDetails.contactPhone}
-                        onChange={handleContactChange}
-                    />
-                    <input
-                        type="text"
-                        name="contactEmail"
-                        placeholder="Contact Email"
-                        value={contactDetails.contactEmail}
-                        onChange={handleContactChange}
-                    />
+
+                    <div>
+                        <label>
+                        Contact Name:
+                        </label><br />
+                        <input
+                            type="text"
+                            name="contactName"
+                            value={contactDetails.contactName}
+                            onChange={handleContactChange}
+                        />
+                    </div>
+
+                    <div>
+                        <label>
+                           Position:
+                        </label><br />
+                        <input
+                            type="text"
+                            name="contactPosition"
+                            value={contactDetails.contactPosition}
+                            onChange={handleContactChange}
+                        />
+                    </div>
+                    
+                    <div>
+                        <label>
+                        Phone Number
+                        </label><br />
+                        <input
+                            type="text"
+                            name="contactPhone"
+                            value={contactDetails.contactPhone}
+                            onChange={handleContactChange}
+                        />
+                    </div>
+                    
+                    <div>
+                        <label>
+                        Email:
+                        </label><br />
+                        <input
+                            type="text"
+                            name="contactEmail"
+                            value={contactDetails.contactEmail}
+                            onChange={handleContactChange}
+                        />
+                    </div>
                 </section>
-                <button type="submit">Cancel</button>
+                <button type="button">Cancel</button>
                 <button type="submit">Save</button>
             </form>
         </div>
     );
 };
-
 
 export default WarehouseEdit;
