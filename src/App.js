@@ -1,9 +1,11 @@
 import './App.scss';
+import WarehouseDetails from './components/WarehouseDetails/WarehouseDetails.jsx'
+
 
 function App() {
   return (
     <div className="App">
-      instock 
+      <WarehouseDetails/>
     </div>
   );
 }
