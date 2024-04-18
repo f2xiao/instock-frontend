@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom"; // Import BrowserRouter and Link
+import { NavLink } from "react-router-dom"; // Import NavLink
 import logo from "../../logo/InStock-Logo_2x.png";
 import "./header.scss";
 
@@ -8,18 +8,30 @@ const Header = () => {
     <div className="navbar">
       <div className="navbar__container">
         <div className="navbar__logo-container">
-          <Link to="/">
+          <NavLink to="/">
             <img src={logo} className="navbar__img" alt="Instock" />
-          </Link>
+          </NavLink>
         </div>
         <div className="navbar__links">
           <ul className="navbar__list">
-            <Link to="/warehouses" className="navbar__link navbar__warehouses">
-              Warehouses
-            </Link>
-            <Link to="/inventory" className="navbar__link navbar__inventory">
-              Inventory
-            </Link>
+            <li>
+              <NavLink
+                to="/warehouses"
+                className="navbar__link navbar__warehouses"
+                activeClassName="navbar__warehouses--active" // Add activeClassName
+              >
+                Warehouses
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/inventory"
+                className="navbar__link navbar__inventory"
+                activeClassName="navbar__inventory--active" // Add activeClassName
+              >
+                Inventory
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>

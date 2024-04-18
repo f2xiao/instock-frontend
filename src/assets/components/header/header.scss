@@ -75,7 +75,8 @@
       margin: 0;
     }
   }
-  &__warehouses--active {
+  &__warehouses--active,
+  &__inventory--active {
     font-weight: bold;
     background-color: $color-bg;
     border-radius: 20px;
