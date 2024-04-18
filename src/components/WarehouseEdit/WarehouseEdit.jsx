@@ -68,7 +68,7 @@ const WarehouseEdit = () => {
 
                     <div>
                         <label>
-                        Street Address</label><br />
+                            Street Address</label><br />
                         <input
                             type="text"
                             name="address"
@@ -76,7 +76,6 @@ const WarehouseEdit = () => {
                             onChange={handleWarehouseChange}
                         />
                     </div>
-
 
                    <div>
                         <label>
@@ -88,7 +87,7 @@ const WarehouseEdit = () => {
                             value={warehouseDetails.city}
                             onChange={handleWarehouseChange}
                         />
-                </div>
+                    </div>
                     
                     <div>
                         <label>
@@ -101,7 +100,6 @@ const WarehouseEdit = () => {
                             onChange={handleWarehouseChange}
                         />
                     </div>
-                    
                 </section>
 
                 <section className='edit__section'>
