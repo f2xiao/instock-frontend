@@ -1,0 +1,47 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.row {
+  &__wrapper {
+    @include flex;
+    flex-wrap: wrap;
+    border-top: 1px solid $color-border;
+    // justify-content: space-between;
+    @include responsive-property(padding, 1rem 1.5rem, 1rem 1.5rem);
+  }
+  &__column {
+    @include flex;
+    @include responsive-property(flex-wrap, wrap, nowrap);
+    align-content: flex-start;
+    justify-content: space-between;
+
+    &--first {
+      @include responsive-property(flex-basis, 50%, 0);
+    }
+    &--second {
+      @include responsive-property(flex-basis, 50%, 0);
+    }
+  }
+
+  &__header {
+    flex-basis: 100%;
+    text-transform: uppercase;
+    @include responsive-property(display, block, none);
+  }
+
+  &__name {
+    flex-basis: 100%;
+    @include flex-cross-center;
+    color: $color-cta;
+    text-transform: capitalize;
+    font-weight: 600;
+  }
+  &__value {
+    flex-basis: 100%;
+  }
+
+  &__cta {
+    @include responsive-property(display, flex, block);
+    justify-content: space-between;
+  }
+}

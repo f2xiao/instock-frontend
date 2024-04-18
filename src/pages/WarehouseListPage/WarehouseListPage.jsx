@@ -1,6 +1,15 @@
 import "./WarehouseListPage.scss";
+import Row from "../../components/Row/Row";
+import { useState } from "react";
 const WarehouseListPage = () => {
-  return <div>WarehouseListPage</div>;
+  const [warehouses, setWarehouses] = useState([]);
+
+  return (
+    <div>
+      <Row />
+      <Row />
+    </div>
+  );
 };
 
 export default WarehouseListPage;
