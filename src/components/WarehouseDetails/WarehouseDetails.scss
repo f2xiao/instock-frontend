@@ -1,5 +1,126 @@
 @use '../../style/partials/global.scss'as *;
 @use '../../style/partials/mixins.scss' as *;
 @use '../../style/partials/variables.scss' as *;
-// @use '../../style/partical/typography.scss';
+
+h4{
+    padding-bottom: 0.5rem;
+}
+
+.details{
+    
+    &__top{
+        display: flex;
+        padding: 2rem 1.5rem;
+        border-bottom: 1px solid $color-border;
+
+       @include tablet{
+        padding: 2rem 2rem;
+       }
+    }
+
+    &__return{
+        position:absolute;
+        left:1rem;
+        top:2.4rem;
+        @include tablet{
+            left:2rem;
+            top:2.6rem;
+        }
+    }
+
+    &__title{
+        padding-left: 1.5rem;
+        @include tablet{
+            padding-left:2.0rem;
+        }
+    }
+
+    &__noshow{
+        display:none;
+        @include tablet{
+            display: inline;
+            color: white;
+            text-align: right;
+            position: absolute;
+            top:0.8rem;
+        }
+    }
+    
+    &__edit{
+        background-image: url('../../assets/icons/create_white_24dp.svg');
+        background-size: 1.3rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        width:2.25rem;
+        height: 2.25rem;
+        position: absolute;
+        right:2rem;
+        background-color:$color-cta ;
+        border:0;
+        border-radius: 1.25rem;
+        &:hover{
+            background-color:$color-bg-cta-hover;
+        }
+
+        @include tablet{
+            padding: 0 1rem;
+            width:5.5rem;
+            height:2.375rem;
+            background-position:25%;
+        }
+    }
+
+    &__bottom{
+       margin:$margin-m;
+       @include tablet{
+        margin:1.5rem 2rem;
+        display: flex;
+       }
+
+       @include desktop{
+        margin:2rem 2.5rem;
+       }
+    }
+
+    &__address{
+        margin-bottom: 2rem;
+
+        @include tablet{
+            margin-bottom:0;
+            width:10rem;
+            margin-right: 20vw; 
+        }
+    }
+
+    &__contact{
+        display: flex;
+
+        @include tablet{
+        border-left:1px solid $color-border;
+        }
+    }
+
+    &__contacter{
+        width:50%;
+
+        @include tablet{
+           width:20vw;
+           margin-left: 3rem;
+        }
+    }
+       
+
+    &__info{
+        width:50%;
+
+        @include tablet{
+            width:20vw;
+        } 
+    }
+}
+
+
+   
+
+    
 
