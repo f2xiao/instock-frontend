@@ -1,0 +1,9 @@
+@use '../../style/partials/global' as *;
+@use '../../style/partials/mixins' as *;
+@use '../../style/partials/variables' as *;
+
+.add{
+    @include responsive-margin;
+    margin-top:1.5rem;
+    background-color:$color-bg-page;
+}

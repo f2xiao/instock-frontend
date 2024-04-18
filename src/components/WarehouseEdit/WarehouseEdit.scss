@@ -1,3 +1,34 @@
-@use "../../style/partials/global" as *;
-@use "../../style/partials/mixins" as *;
-@use "../../style/partials/variables" as *;
+@use '../../style/partials/global' as *;
+@use '../../style/partials/mixins' as *;
+@use '../../style/partials/variables' as *;
+
+input{
+    border-radius: 1.25rem;
+    width:100%;
+    height: 2.25rem;
+    margin-bottom:1rem;
+    margin-top:.25rem;
+}
+
+h1{
+    padding: 1.5rem 0;
+}
+
+.edit{
+    @include responsive-margin;
+    margin-top:1.5rem;
+    background-color:$color-bg-page;
+    padding-left: 7.5vw;
+
+    &__title{
+        padding: 1.5rem 0;
+    border-bottom: 1px solid $color-border;
+        
+    }
+        
+
+    &__form{
+        width:80vw;
+        
+    }
+}

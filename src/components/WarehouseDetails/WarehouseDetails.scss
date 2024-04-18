@@ -1,0 +1,15 @@
+@use '../../style/partials/global'as *;
+@use '../../style/partials/mixins'as *;
+@use '../../style/partials/variables'as *;
+
+@mixin responsive-margin {
+    margin: 0 1rem;
+  
+    @include tablet {
+      margin: 0 $margin-t;
+    }
+    @include desktop {
+      width: $max-width;
+      margin: 0 $margin-d;
+    }
+  }

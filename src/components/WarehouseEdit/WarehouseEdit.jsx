@@ -41,12 +41,12 @@ const WarehouseEdit = () => {
     };
 
     return (
-        <div>
-            <h2>Edit Warehouse</h2>
+        <div className="edit">
+            <h1>Edit Warehouse</h1>
 
-            <form onSubmit={handleSubmit}>
+            <form className='edit__form' onSubmit={handleSubmit}>
                 <section>
-                    <h3>Warehouse Details</h3>
+                    <h2 className='edit__title'>Warehouse Details</h2>
 
                     <div>
                         <label>
@@ -99,7 +99,7 @@ const WarehouseEdit = () => {
                 </section>
 
                 <section>
-                    <h3>Contact Details</h3>
+                    <h2 className='edit__title'>Contact Details</h2>
 
                     <div>
                         <label>

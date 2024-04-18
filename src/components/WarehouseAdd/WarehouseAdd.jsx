@@ -41,12 +41,12 @@ const WarehouseAdd=()=>{
         };
   
 return (
-    <div>
-        <h2>Add Warehouse</h2>
+    <div className="add">
+        <h1>Add Warehouse</h1>
 
         <form onSubmit={handleSubmit}>
             <section>
-                <h3>Warehouse Details</h3>
+                <h2>Warehouse Details</h2>
 
                 <div>
                     <label>Warehouse Name:</label><br />
@@ -90,7 +90,7 @@ return (
             </section>
 
             <section>
-                <h3>Contact Details</h3>
+                <h2>Contact Details</h2>
 
                 <div>
                     <label>Contact Name:</label><br />
