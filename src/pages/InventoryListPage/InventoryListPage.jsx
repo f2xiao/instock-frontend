@@ -1,6 +1,7 @@
 import "./InventoryListPage.scss";
 import { useState } from "react";
 import DeleteComponent from "../../components/DeleteComponent/DeleteComponent";
+import { API_URL } from '../../utils/api';
 
 const InventoryListPage = () => {
 
@@ -11,10 +12,18 @@ const InventoryListPage = () => {
     setOpenDeleteModal(false);
   }
 
-  const handleDeleteClick = (id) => {
-    
+  const handleDeleteClick = async (id) => {
+    try {
+      const response = await axios.delete(`${API_URL}/api/inventories/${id}`);
+      if (response.status === 200) {
+        //call new Inventory list
+      }
+    } catch (error) {
+      console.log('Failed to delete inventory', error);
+    }
   }
 
+  //to be called on click on delete button from inventory list page
   const handleInventoryDeleteClick = (inventory) => {
     setItemToDelete(inventory);
     setOpenDeleteModal(true);
