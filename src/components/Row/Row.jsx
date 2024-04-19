@@ -1,26 +1,35 @@
 import "./Row.scss";
 
 import arrowRtIcon from "../../assets/icons/chevron_right-24px.svg";
+import { useEffect, useState } from "react";
 
-const Row = ({ dataObj }) => {
-  const rowObj = {
-    warehouse: dataObj["warehouse_name"],
-    address: `${dataObj.address} ${dataObj.city ? `${dataObj.city} ,` : ""} ${
-      dataObj.country
-    }`,
-    "contact name": dataObj["contact_name"],
-    "contact information": `${dataObj["contact_phone"]} ${dataObj["contact_email"]}`,
-  };
-  console.log(dataObj);
+const Row = ({ dataObj, type }) => {
+  const [rowObj, setRowObj] = useState({});
 
-  // const rowObj = {
-  //   "inventory item": dataObj["item_name"],
-  //   category: dataObj["category"],
-  //   Status: dataObj["status"],
-  //   Qty: dataObj["quantity"],
-  //   warehouse: dataObj["warehouse_name"],
-  // };
-  console.log(Object.entries(rowObj));
+  useEffect(() => {
+    if (type === "warehouses") {
+      setRowObj({
+        warehouse: dataObj["warehouse_name"],
+        address: `${dataObj.address} ${
+          dataObj.city ? `${dataObj.city} ,` : ""
+        } ${dataObj.country}`,
+        "contact name": dataObj["contact_name"],
+        "contact information": `${dataObj["contact_phone"]} ${dataObj["contact_email"]}`,
+      });
+    }
+
+    if (type === "inventories") {
+      setRowObj({
+        "inventory item": dataObj["item_name"],
+        category: dataObj["category"],
+        Status: dataObj["status"],
+        Qty: dataObj["quantity"],
+        warehouse: dataObj["warehouse_name"],
+      });
+    }
+  }, [type, dataObj]);
+
+  // console.log(Object.entries(rowObj));
 
   const rowHeaders = Object.keys(rowObj);
   // console.log(rowHeaders);
