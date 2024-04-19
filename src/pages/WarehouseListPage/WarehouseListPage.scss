@@ -1,0 +1,13 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+.warehouse {
+  &__header {
+    @include flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &__cta {
+    @include flex;
+    flex-wrap: wrap;
+  }
+}
