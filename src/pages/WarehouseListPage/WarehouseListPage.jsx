@@ -2,14 +2,14 @@ import "./WarehouseListPage.scss";
 import Table from "../../components/Table/Table";
 
 const WarehouseListPage = () => {
-  // const headers = [
-  //   "warehouse",
-  //   "address",
-  //   "contact name",
-  //   "contact information",
-  // ];
+  const headers = [
+    "warehouse",
+    "address",
+    "contact name",
+    "contact information",
+  ];
 
-  const headers = ["inventory item", "category", "Status", "Qty", "warehouse"];
+  // const headers = ["inventory item", "category", "Status", "Qty", "warehouse"];
   return (
     <div className="page">
       <div className="page__header">
@@ -19,8 +19,8 @@ const WarehouseListPage = () => {
           <button>Add New Warehouse</button>
         </div>
       </div>
-      {/* <Table type="warehouses" headers={headers} /> */}
-      <Table type="inventories" headers={headers} />
+      <Table type="warehouses" headers={headers} />
+      {/* <Table type="inventories" headers={headers} /> */}
     </div>
   );
 };

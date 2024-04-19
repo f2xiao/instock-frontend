@@ -1,6 +1,7 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
-.warehouse {
+.page {
+  @include responsive-property(padding, 1rem 1.5rem, 1rem 2rem);
   &__header {
     @include flex;
     flex-wrap: wrap;

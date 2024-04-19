@@ -9,15 +9,26 @@ import editIcon from "../../assets/icons/edit-24px.svg";
 const Table = ({ type, headers }) => {
   const [data, setData] = useState([]);
 
+  const fetchData = async () => {
+    const response = await axios.get(`${API_URL}/api/${type}`);
+
+    setData(response.data);
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get(`${API_URL}/api/${type}`);
-
-      setData(response.data);
-    };
-
     fetchData();
   }, []);
+  const handleDelete = async (id) => {
+    // console.log(id);
+    try {
+      const response = await axios.delete(`${API_URL}/api/${type}/${id}`);
+      console.log(response);
+
+      fetchData();
+    } catch (error) {
+      console.log("can't delete the item", error);
+    }
+  };
 
   return (
     <table className="table">
@@ -34,7 +45,14 @@ const Table = ({ type, headers }) => {
           <tr key={item.id}>
             <Row dataObj={item} />
             <td className="table__cta">
-              <img alt="delete icon" className="row__delete" src={deleteIcon} />
+              <img
+                alt="delete icon"
+                className="row__delete"
+                src={deleteIcon}
+                onClick={() => {
+                  handleDelete(item.id);
+                }}
+              />
               <img alt="edit icon" className="row__edit" src={editIcon} />
             </td>
           </tr>

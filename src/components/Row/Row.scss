@@ -1,29 +1,31 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-td {
-  flex-basis: 50%;
-  vertical-align: middle;
-}
+// import arrowRtIcon from "../../assets/icons/chevron_right-24px.svg";
+
 .row {
-  @include flex;
-  flex-wrap: wrap;
-
-  @include tablet {
-    display: table-row;
-  }
-
   &__header {
     @include responsive-property(display, block, none);
     text-transform: uppercase;
+    position: relative;
+  }
+
+  &__status {
+    &--tablet {
+      @include responsive-property(display, none, block);
+    }
+  }
+
+  &__img {
+    position: absolute;
   }
 
   &__address {
-    width: 150px;
+    max-width: 130px;
   }
 
   &__info {
-    width: 150px;
+    max-width: 130px;
   }
 
   &__cta {

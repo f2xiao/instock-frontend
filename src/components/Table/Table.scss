@@ -13,8 +13,24 @@ th {
 tr {
   @include flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
 
   @include tablet {
     display: table-row;
+  }
+}
+td {
+  flex-basis: 40%;
+  vertical-align: middle;
+}
+.table {
+  &__cta {
+    flex-basis: 100%;
+    @include flex;
+    @include tablet {
+      display: table-cell;
+    }
+    justify-content: space-between;
   }
 }
