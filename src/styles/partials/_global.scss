@@ -62,7 +62,6 @@ th {
 tr {
   @include flex;
   flex-wrap: wrap;
-  gap: 2rem;
 
   @include tablet {
     display: table-row;
@@ -74,6 +73,5 @@ tr {
 td {
   flex-basis: 40%;
   vertical-align: middle;
-  // padding: 0 1rem;
-  @include responsive-property(padding, 0 1rem, 1rem 1rem);
+  @include responsive-property(padding, 0, 1rem 1rem);
 }
