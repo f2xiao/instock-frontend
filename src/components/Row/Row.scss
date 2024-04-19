@@ -1,8 +1,6 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-// import arrowRtIcon from "../../assets/icons/chevron_right-24px.svg";
-
 .row {
   &__header {
     @include responsive-property(display, block, none);
@@ -10,25 +8,37 @@
     position: relative;
   }
 
+  &__first {
+    color: $color-cta;
+    font-weight: 600;
+  }
+
   &__status {
+    &--mobile {
+      @include responsive-property(display, table-cell, none);
+    }
     &--tablet {
-      @include responsive-property(display, none, block);
+      @include responsive-property(display, none, table-cell);
     }
   }
 
   &__img {
     position: absolute;
+    margin-left: 0.25rem;
   }
 
   &__address {
-    max-width: 130px;
+    display: inline-block;
+    max-width: 100px;
   }
 
   &__info {
+    display: inline-block;
     max-width: 130px;
   }
 
-  &__cta {
-    flex-basis: 100%;
+  &__warehouse {
+    @include responsive-property(color, transparent, $color-text);
+    @include responsive-property(display, table-cell, none);
   }
 }
