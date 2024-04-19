@@ -30,6 +30,7 @@ const Row = ({ dataObj, type }) => {
   }, [type, dataObj]);
 
   // console.log(Object.entries(rowObj));
+  console.log(dataObj["status"]);
 
   const rowHeaders = Object.keys(rowObj);
   // console.log(rowHeaders);
@@ -45,7 +46,19 @@ const Row = ({ dataObj, type }) => {
       </td>
       <td className="row__status row__status--mobile">
         <span className="row__header">{rowHeaders[2]}</span>
-        <span>{rowObj[rowHeaders[2]]}</span>
+        <span
+          className={
+            type !== "inventories"
+              ? ""
+              : ` ${
+                  dataObj["status"].toLowerCase() === "in stock"
+                    ? "row__tag "
+                    : "row__tag row__tag--error"
+                }`
+          }
+        >
+          {rowObj[rowHeaders[2]]}
+        </span>
       </td>
       <td>
         <span className="row__header">{rowHeaders[1]}</span>
@@ -53,7 +66,19 @@ const Row = ({ dataObj, type }) => {
       </td>
       <td className="row__status row__status--tablet">
         <span className="row__header">{rowHeaders[2]}</span>
-        {rowObj[rowHeaders[2]]}
+        <span
+          className={
+            type !== "inventories"
+              ? ""
+              : ` ${
+                  dataObj["status"].toLowerCase() === "in stock"
+                    ? "row__tag "
+                    : "row__tag row__tag--error"
+                }`
+          }
+        >
+          {rowObj[rowHeaders[2]]}
+        </span>
       </td>
       <td>
         <span className="row__header">{rowHeaders[3]}</span>
