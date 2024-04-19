@@ -22,6 +22,7 @@ const Table = ({ type, headers }) => {
       const response = await axios.delete(`${API_URL}/api/${type}/${id}`);
       if (response.status === 204) {
         fetchData();
+        setOpenDeleteModal(false);
       }
     } catch (error) {
       console.log(`Failed to delete ${type}`, error);
