@@ -1,0 +1,36 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+table {
+  width: 100%;
+}
+th {
+  text-align: left;
+  text-transform: uppercase;
+  @include responsive-property(display, none, table-cell);
+}
+
+tr {
+  @include flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+
+  @include tablet {
+    display: table-row;
+  }
+}
+td {
+  flex-basis: 40%;
+  vertical-align: middle;
+}
+.table {
+  &__cta {
+    flex-basis: 100%;
+    @include flex;
+    @include tablet {
+      display: table-cell;
+    }
+    justify-content: space-between;
+  }
+}
