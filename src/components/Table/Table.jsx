@@ -36,6 +36,14 @@ const Table = ({ type, headers }) => {
     setOpenDeleteModal(true);
   }
 
+  useEffect(() => {
+    if (openDeleteModal) {
+      const modalDiv = document.getElementById('delete-modal');
+      modalDiv.style.height = document.body.clientHeight + "px";
+      window.scrollTo(0,0);
+    }
+  }, [openDeleteModal]);
+
   const fetchData = async () => {
     const response = await axios.get(`${API_URL}/api/${type}`);
     setData(response.data);
