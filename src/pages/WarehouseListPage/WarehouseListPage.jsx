@@ -2,6 +2,7 @@ import "./WarehouseListPage.scss";
 import TableList from "../../components/TableList/TableList";
 
 const WarehouseListPage = () => {
+
   const headers = [
     "warehouse",
     "address",
