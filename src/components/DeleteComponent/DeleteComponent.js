@@ -3,8 +3,8 @@ import closeIcon from '../../assets/icons/close-24px.svg'
 
 const DeleteComponent = (props) => {
     return (
-        <div className="delete-container">
-            <div className="delete-wrapper">
+        <div className="delete-container" id='delete-modal'>
+            <div className="delete-wrapper" id="modal-wrapper">
                 <div className="delete-wrapper__close-div">
                     <img src={closeIcon} className="delete-wrapper__close-icon" onClick={props.handleCancelClick}></img>
                 </div>
