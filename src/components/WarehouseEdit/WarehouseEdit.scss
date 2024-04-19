@@ -1,0 +1,135 @@
+@use '../../style/partials/global' as *;
+@use '../../style/partials/mixins' as *;
+@use '../../style/partials/variables' as *;
+
+input{
+    border-radius: 1.25rem;
+    width:100%;
+    height: 2.25rem;
+    margin-bottom:1rem;
+    margin-top:.25rem;
+    border: 1px solid $color-border;
+    font-family: "Titillium Web";
+    @include tablet{
+        height: 2.25rem;
+        width:100%;
+            
+    }
+}
+
+button{
+    height: 2.25rem;
+    border-style: solid;
+    border-color:$color-border;
+    border-radius: 1.5rem;
+    padding: 0.4rem 1rem;
+    width:8rem;
+    @include tablet{
+        height: 2.38rem;
+        margin-left: 1rem;
+        width:auto;
+    }
+}
+
+label{
+    font-style:$h3-mobile-fontsize;
+    font-weight: 600;
+    @include tablet{
+    font-size:$h3-desktab-fontsize;
+    }
+}
+
+input{
+    padding-left: 1rem;
+}
+    
+.edit{
+    padding-top:1.5rem;
+    background-color:$color-bg-page;
+    padding-left: 5vw;
+    @include tablet{       
+    background-color: white;
+    padding-left: 0;}
+
+    &__return{
+        position: absolute;
+        left:2rem;
+        padding-top: 0.5rem;
+    }
+
+    &__wrapper{
+        @include tablet{
+        display: flex;
+        }
+    }
+
+    &__form{
+       padding:0 1rem;
+       @include tablet{
+        padding: 0;
+       }
+    }
+
+    &__title{
+        border-color:$color-border;
+        padding: 1.5rem 0 1.5rem 3rem;
+        width:calc(100% - 2rem);
+
+        @include tablet{
+            padding-left: 4rem;
+            border-bottom: 1px solid $color-border;
+            padding-right: 0;
+            width:100vw;
+
+        }
+    }
+
+    &__section{
+        border-top: 1px solid $color-border;
+        margin-bottom: 1rem;
+        width:80vw;
+        @include tablet{
+            width:50%;
+            padding:0 2rem;
+            margin-top: 2rem;
+            border:0;
+        }
+    }
+
+    &__section1{
+    @include tablet{
+    border-right:1px solid $color-border;
+        }
+    }
+
+    &__sectiontitle{
+        padding: 1.5rem 0;
+        @include tablet{
+            padding-top: 0;
+        }
+    }
+
+    &__buttons{
+        width:80vw;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 2rem;
+        @include tablet{
+            background-color: $color-bg-page;
+            width:100vw;
+            justify-content: end;
+            padding: 2rem;
+        }
+    }
+
+    &__cancel{
+        background-color: $color-bg;
+        color: $color-text-secondary;
+    }
+
+    &__save{
+        color:$color-bg;
+        background-color:$color-cta;
+        border-color: $color-cta;
+    }
+}
