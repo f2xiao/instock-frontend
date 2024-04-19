@@ -76,3 +76,14 @@
   @include flex($dir);
   justify-content: center;
 }
+
+// cta
+@mixin cta($maxw) {
+  @include responsive-property(height, 36px, 38px);
+  border-radius: 20px;
+  width: 100%;
+  @include tablet {
+    width: 50%;
+    max-width: $maxw;
+  }
+}

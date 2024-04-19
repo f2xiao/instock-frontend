@@ -1,17 +1,17 @@
-import Row from "../../components/Row/Row";
-import { useEffect, useState } from "react";
+import "./Table.scss";
 import axios from "axios";
 import { API_URL } from "../../utils/api";
-import "./Table.scss";
+import { useEffect, useState } from "react";
+import Row from "../../components/Row/Row";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
+import sortIcon from "../../assets/icons/sort-24px.svg";
 
 const Table = ({ type, headers }) => {
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
     const response = await axios.get(`${API_URL}/api/${type}`);
-
     setData(response.data);
   };
 
@@ -35,25 +35,28 @@ const Table = ({ type, headers }) => {
       <thead>
         <tr>
           {headers.map((header) => (
-            <th key={header}>{header}</th>
+            <th key={header} className="table__header">
+              {header}
+              <img className="table__sort" src={sortIcon} alt="sort icon" />
+            </th>
           ))}
-          <th>action</th>
+          <th className="table__actions">actions</th>
         </tr>
       </thead>
       <tbody>
         {data.map((item) => (
           <tr key={item.id}>
-            <Row dataObj={item} />
+            <Row dataObj={item} type={type} />
             <td className="table__cta">
               <img
                 alt="delete icon"
-                className="row__delete"
+                className="table__icon"
                 src={deleteIcon}
                 onClick={() => {
                   handleDelete(item.id);
                 }}
               />
-              <img alt="edit icon" className="row__edit" src={editIcon} />
+              <img alt="edit icon" className="table__icon" src={editIcon} />
             </td>
           </tr>
         ))}
