@@ -15,7 +15,7 @@ const InventoryListPage = () => {
   const handleDeleteClick = async (id) => {
     try {
       const response = await axios.delete(`${API_URL}/api/inventories/${id}`);
-      if (response.status === 200) {
+      if (response.status === 204) {
         //call new Inventory list
       }
     } catch (error) {

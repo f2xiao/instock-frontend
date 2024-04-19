@@ -15,7 +15,7 @@ const WarehouseListPage = () => {
   const handleDeleteClick = async (id) => {
     try {
       const response = await axios.delete(`${API_URL}/api/warehouses/${id}`);
-      if (response.status === 200) {
+      if (response.status === 204) {
         //call new warehouse list
       }
     } catch (error) {
