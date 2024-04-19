@@ -2,27 +2,25 @@ import "./WarehouseListPage.scss";
 import Table from "../../components/Table/Table";
 
 const WarehouseListPage = () => {
-  const headers = {
-    warehouse_name: "warehouse",
-    address: "address",
-    city: "",
-    country: "",
-    contact_name: "contact name",
-    contact_phone: "contact",
-    contact_email: "information",
-    action: "action",
-  };
+  // const headers = [
+  //   "warehouse",
+  //   "address",
+  //   "contact name",
+  //   "contact information",
+  // ];
 
+  const headers = ["inventory item", "category", "Status", "Qty", "warehouse"];
   return (
-    <div className="warehouse">
-      <div className="warehouse__header">
+    <div className="page">
+      <div className="page__header">
         <h1>Warehouses</h1>
-        <div className="warehouse__cta">
+        <div className="page__cta">
           <input type="search" />
           <button>Add New Warehouse</button>
         </div>
       </div>
-      <Table type="warehouses" headers={headers} />
+      {/* <Table type="warehouses" headers={headers} /> */}
+      <Table type="inventories" headers={headers} />
     </div>
   );
 };

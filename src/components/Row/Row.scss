@@ -1,73 +1,32 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
+td {
+  flex-basis: 50%;
+  vertical-align: middle;
+}
 .row {
   @include flex;
-  @include responsive-property(flex-wrap, wrap, nowrap);
-  border-top: 1px solid $color-border;
-  justify-content: space-between;
-  @include responsive-property(gap, 1rem, 2rem);
+  flex-wrap: wrap;
 
-  @include responsive-property(padding, 1rem 1.5rem, 1rem 2rem);
-  &:first-of-type {
-    text-transform: uppercase;
-    @include responsive-property(display, none, flex);
-  }
-
-  &__column {
-    @include flex;
-    @include responsive-property(flex-wrap, wrap, nowrap);
-    align-content: flex-start;
-    align-items: center;
-    // @include tablet {
-    //   justify-content: space-around;
-    // }
-
-    &--first {
-      @include responsive-property(flex-basis, 40%, 40%);
-    }
-    &--second {
-      @include responsive-property(flex-basis, 50%, 50%);
-    }
+  @include tablet {
+    display: table-row;
   }
 
   &__header {
-    flex-basis: 100%;
-    text-transform: uppercase;
     @include responsive-property(display, block, none);
-    // &:first-of-type {
-    //   @include responsive-property(display, none, block);
-    // }
+    text-transform: uppercase;
   }
 
-  &__name {
-    flex-basis: 50%;
-    @include flex-cross-center;
-
-    &--body {
-      color: $color-cta;
-      text-transform: capitalize;
-      font-weight: 600;
-    }
+  &__address {
+    width: 150px;
   }
 
-  &__value {
-    flex-basis: 100%;
-    &--second {
-      @include responsive-property(flex-basis, 7.9375rem, 9.4375rem, 100%);
-    }
-    &--fixed {
-      flex-basis: 11.375rem;
-    }
-  }
-  &__action {
-    @include responsive-property(display, none, block);
+  &__info {
+    width: 150px;
   }
 
   &__cta {
-    @include flex;
-    gap: 1rem;
-    @include responsive-property(flex-basis, 100%, 0);
-    justify-content: space-between;
+    flex-basis: 100%;
   }
 }

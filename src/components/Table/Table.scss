@@ -1,2 +1,20 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
+
+table {
+  width: 100%;
+}
+th {
+  text-align: left;
+  text-transform: uppercase;
+  @include responsive-property(display, none, table-cell);
+}
+
+tr {
+  @include flex;
+  flex-wrap: wrap;
+
+  @include tablet {
+    display: table-row;
+  }
+}
