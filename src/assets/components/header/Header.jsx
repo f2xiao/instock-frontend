@@ -17,8 +17,7 @@ const Header = () => {
             <li>
               <NavLink
                 to="/warehouses"
-                className="navbar__link navbar__warehouses"
-                activeClassName="navbar__warehouses--active" // Add activeClassName
+                className="navbar__link navbar__warehouses--active"
               >
                 Warehouses
               </NavLink>
@@ -26,8 +25,7 @@ const Header = () => {
             <li>
               <NavLink
                 to="/inventory"
-                className="navbar__link navbar__inventory"
-                activeClassName="navbar__inventory--active" // Add activeClassName
+                className="navbar__link navbar__inventory--active"
               >
                 Inventory
               </NavLink>

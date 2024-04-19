@@ -75,14 +75,17 @@
       margin: 0;
     }
   }
-  &__warehouses--active,
-  &__inventory--active {
-    font-weight: bold;
-    background-color: $color-bg;
-    border-radius: 20px;
-  }
 }
-
-a:hover {
+.navbar__link {
+  color: $color-border;
+  font-size: $p2-mobile-fontsize;
   text-decoration: none;
+}
+.navbar__link:hover {
+  font-weight: bold;
+  background-color: $color-text;
+  border-radius: 30px;
+  text-decoration: none;
+  color: $color-bg-cta;
+  padding: 0.75rem;
 }
