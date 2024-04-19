@@ -9,7 +9,7 @@ const DeleteComponent = (props) => {
                     <img src={closeIcon} className="delete-wrapper__close-icon" onClick={props.handleCancelClick}></img>
                 </div>
                 <div className="delete-content">
-                    <h1 className="delete-content__title">Delete {props.itemName} {props.itemType} item?</h1>
+                    <h1>Delete {props.itemName} {props.itemType} item?</h1>
                     <p className="delete-content__message">
                         Please confirm that you'd like to delete {props.itemName} from the {props.itemType} list.
                         You won't be able to undo this action.
