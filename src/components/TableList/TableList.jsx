@@ -1,7 +1,20 @@
 import "./TableList.scss";
 import Table from "../../components/Table/Table";
+import axios from "axios";
+import { API_URL } from "../../utils/api";
+import { useEffect, useState } from "react";
 
 const TableList = ({ headers, type, title, ctaText }) => {
+  const [data, setData] = useState([]);
+
+  const fetchData = async () => {
+    const response = await axios.get(`${API_URL}/api/${type}`);
+    setData(response.data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <div className="table-list">
       <div className="table-list__header">
@@ -11,7 +24,7 @@ const TableList = ({ headers, type, title, ctaText }) => {
           <button>{ctaText}</button>
         </form>
       </div>
-      <Table type={type} headers={headers} />
+      <Table type={type} headers={headers} data={data} />
     </div>
   );
 };
