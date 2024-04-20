@@ -7,9 +7,11 @@ import sortIcon from "../../assets/icons/sort-24px.svg";
 import axios from "axios";
 import { API_URL } from "../../utils/api";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Table = ({ type, headers, searchTerm, warehouseInventories = false, id = "" }) => {
 
+  const navigate = useNavigate();
   const [isAsc, setIsAsc] = useState(false);
   const [data, setData] = useState([]);
   const [itemToDelete, setItemToDelete] = useState();
@@ -54,6 +56,10 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false, id = "
   const handleItemDeleteClick = (item) => {
     setItemToDelete(item);
     setOpenDeleteModal(true);
+  };
+
+  const handleEditClick = (id) => {
+    navigate(`/${type}/${id}/edit`);
   };
 
   const handleColumnSorting = async (event) => {
@@ -130,7 +136,7 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false, id = "
                     handleItemDeleteClick(item);
                   }}
                 />
-                <img alt="edit icon" className="table__icon" src={editIcon} />
+                <img alt="edit icon" className="table__icon" src={editIcon} onClick={() => handleEditClick(item.id)} />
               </td>
             </tr>
           ))}
