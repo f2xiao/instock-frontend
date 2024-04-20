@@ -1,9 +1,9 @@
 import "./Row.scss";
-
+import { Link } from "react-router-dom";
 import arrowRtIcon from "../../assets/icons/chevron_right-24px.svg";
 import { useEffect, useState } from "react";
 
-const Row = ({ dataObj, type }) => {
+const Row = ({ dataObj, type, warehouseInventories = false }) => {
   const [rowObj, setRowObj] = useState({});
 
   useEffect(() => {
@@ -26,11 +26,20 @@ const Row = ({ dataObj, type }) => {
         Qty: dataObj["quantity"],
         warehouse: dataObj["warehouse_name"],
       });
+
+      if (warehouseInventories) {
+        setRowObj({
+          "inventory item": dataObj["item_name"],
+          category: dataObj["category"],
+          Status: dataObj["status"],
+          Qty: dataObj["quantity"],
+        });
+      }
     }
   }, [type, dataObj]);
 
   // console.log(Object.entries(rowObj));
-  console.log(dataObj["status"]);
+  // console.log(dataObj["status"]);
 
   const rowHeaders = Object.keys(rowObj);
   // console.log(rowHeaders);
@@ -41,14 +50,16 @@ const Row = ({ dataObj, type }) => {
     <>
       <td>
         <span className="row__header">{rowHeaders[0]}</span>
-        <span className="row__first">{rowObj[rowHeaders[0]]}</span>
-        <img className="row__img" src={arrowRtIcon} alt="arrow right icon" />
+        <Link to={`/${type}/${dataObj.id}`}>
+          <span className="row__first">{rowObj[rowHeaders[0]]}</span>
+          <img className="row__img" src={arrowRtIcon} alt="arrow right icon" />
+        </Link>
       </td>
       <td className="row__status row__status--mobile">
         <span className="row__header">{rowHeaders[2]}</span>
         <span
           className={
-            type !== "inventories"
+            type !== "inventories" && !warehouseInventories
               ? ""
               : ` ${
                   dataObj["status"].toLowerCase() === "in stock"
@@ -68,7 +79,7 @@ const Row = ({ dataObj, type }) => {
         <span className="row__header">{rowHeaders[2]}</span>
         <span
           className={
-            type !== "inventories"
+            type !== "inventories" && !warehouseInventories
               ? ""
               : ` ${
                   dataObj["status"].toLowerCase() === "in stock"

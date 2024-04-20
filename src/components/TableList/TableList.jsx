@@ -3,6 +3,7 @@ import Table from "../../components/Table/Table";
 import { useState } from "react";
 
 const TableList = ({ headers, type, title, ctaText }) => {
+  
   const [searchTerm, setSearchTerm] = useState();
 
   const handleSearch = (event) => {
@@ -15,7 +16,7 @@ const TableList = ({ headers, type, title, ctaText }) => {
       <div className="table-list__header">
         <h1>{title}</h1>
         <form className="table-list__form">
-          <input type="search" placeholder="Search..." onChange={handleSearch}  />
+          <input type="search" placeholder="Search..." onChange={handleSearch} />
           <button>{ctaText}</button>
         </form>
       </div>

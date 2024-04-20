@@ -1,0 +1,38 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+.details-header {
+  @include responsive-property(
+    padding,
+    $padding-m 0,
+    $padding-t 0,
+    $padding-d 0
+  );
+  @include flex;
+  justify-content: space-between;
+  &__icon {
+    margin-right: 1rem;
+  }
+  &__cta {
+    position: relative;
+    @include responsive-property(width, auto, 6rem);
+
+    &::before {
+      content: "";
+      display: inline-block;
+      height: 20px;
+      width: 20px;
+      background: center/contain no-repeat
+        url("../../assets/icons/edit-24px-white.svg");
+      position: absolute;
+
+      @include responsive-property(top, 6px, 9px);
+      left: 0.5rem;
+    }
+    &--first {
+      @include responsive-property(display, block, none);
+    }
+    &--second {
+      @include responsive-property(display, none, block);
+    }
+  }
+}
