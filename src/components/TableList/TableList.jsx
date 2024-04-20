@@ -5,16 +5,16 @@ import { API_URL } from "../../utils/api";
 import { useEffect, useState } from "react";
 
 const TableList = ({ headers, type, title, ctaText }) => {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
 
-  const fetchData = async () => {
-    const response = await axios.get(`${API_URL}/api/${type}`);
-    setData(response.data);
-  };
+  // const fetchData = async () => {
+  //   const response = await axios.get(`${API_URL}/api/${type}`);
+  //   setData(response.data);
+  // };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
   return (
     <div className="table-list">
       <div className="table-list__header">
@@ -24,7 +24,7 @@ const TableList = ({ headers, type, title, ctaText }) => {
           <button>{ctaText}</button>
         </form>
       </div>
-      <Table type={type} headers={headers} data={data} />
+      <Table type={type} headers={headers} />
     </div>
   );
 };

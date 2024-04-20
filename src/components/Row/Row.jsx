@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import arrowRtIcon from "../../assets/icons/chevron_right-24px.svg";
 import { useEffect, useState } from "react";
 
-const Row = ({ dataObj, type }) => {
+const Row = ({ dataObj, type, warehouseInventories = false }) => {
   const [rowObj, setRowObj] = useState({});
 
   useEffect(() => {
@@ -26,14 +26,15 @@ const Row = ({ dataObj, type }) => {
         Qty: dataObj["quantity"],
         warehouse: dataObj["warehouse_name"],
       });
-    }
-    if (type === "warehouse-inventories") {
-      setRowObj({
-        "inventory item": dataObj["item_name"],
-        category: dataObj["category"],
-        Status: dataObj["status"],
-        Qty: dataObj["quantity"],
-      });
+
+      if (warehouseInventories) {
+        setRowObj({
+          "inventory item": dataObj["item_name"],
+          category: dataObj["category"],
+          Status: dataObj["status"],
+          Qty: dataObj["quantity"],
+        });
+      }
     }
   }, [type, dataObj]);
 
@@ -58,7 +59,7 @@ const Row = ({ dataObj, type }) => {
         <span className="row__header">{rowHeaders[2]}</span>
         <span
           className={
-            type !== "inventories" && type !== "warehouse-inventories"
+            type !== "inventories" && !warehouseInventories
               ? ""
               : ` ${
                   dataObj["status"].toLowerCase() === "in stock"
@@ -78,7 +79,7 @@ const Row = ({ dataObj, type }) => {
         <span className="row__header">{rowHeaders[2]}</span>
         <span
           className={
-            type !== "inventories" && type !== "warehouse-inventories"
+            type !== "inventories" && !warehouseInventories
               ? ""
               : ` ${
                   dataObj["status"].toLowerCase() === "in stock"

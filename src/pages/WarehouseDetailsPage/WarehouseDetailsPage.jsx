@@ -10,8 +10,6 @@ import { API_URL } from "../../utils/api";
 const WarehouseDetailsPage = () => {
   const { id } = useParams();
   const [warehouse, setWarehouse] = useState([]);
-  const [inventorties, setInventories] = useState([]);
-
   const [isFetching, setIsFetching] = useState(true);
 
   useEffect(() => {
@@ -26,21 +24,7 @@ const WarehouseDetailsPage = () => {
       }
     };
 
-    const fetchInventories = async () => {
-      try {
-        const response = await axios.get(
-          `${API_URL}/api/warehouses/${id}/inventories`
-        );
-        console.log(response.data);
-
-        setInventories(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
     fetchWarehouse();
-    fetchInventories();
   }, []);
 
   if (isFetching) {
@@ -60,9 +44,10 @@ const WarehouseDetailsPage = () => {
         <WarehouseDetails warehouse={warehouse} />
       </div>
       <Table
-        type="warehouse-inventories"
+        type="inventories"
         headers={headers}
-        data={inventorties}
+        warehouseInventories
+        id={id}
       />
     </div>
   );
