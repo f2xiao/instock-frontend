@@ -69,6 +69,10 @@ tr {
   border-bottom: 1px solid $color-border;
 
   @include responsive-property(padding, 1rem 0, 0);
+
+  &:hover {
+    background: rgba(46, 102, 229, 0.07);
+  }
 }
 td {
   flex-basis: 40%;
