@@ -19,11 +19,11 @@ function App() {
         <Route path="warehouses" element={<WarehouseListPage />} />
         <Route path="warehouses/:id" element={<WarehouseDetailsPage />} />
         <Route path="warehouses/:id/edit" element={<WarehouseEditPage />} />
-        <Route path="warehouses/:id/add" element={<WarehouseAddPage />} />
+        <Route path="warehouses/add" element={<WarehouseAddPage />} />
         <Route path="inventories" element={<InventoryListPage />} />
         <Route path="inventories/:id" element={<InventoryDetailsPage />} />
         <Route path="inventories/:id/edit" element={<InventoryEditPage />} />
-        <Route path="inventories/:id/add" element={<InventoryAddPage />} />
+        <Route path="inventories/add" element={<InventoryAddPage />} />
         <Route path="*" element={<div>Not Found 404 🥲</div>} />
       </Routes>
     </BrowserRouter>
