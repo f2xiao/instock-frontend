@@ -9,9 +9,7 @@
   );
   @include flex;
   justify-content: space-between;
-  &__icon {
-    margin-right: 1rem;
-  }
+
   &__cta {
     position: relative;
     @include responsive-property(width, auto, 6rem);
