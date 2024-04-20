@@ -17,14 +17,15 @@ const ItemDetails = () => {
   });
 
   const navigate = useNavigate();
-  const { id, warehouseName } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchItemDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/inventories/${id}/${warehouseName}`
+          `http://localhost:8080/inventories/${id}`
         );
+
         setSingleItem(response.data);
       } catch (error) {
         console.log(error);
@@ -32,12 +33,10 @@ const ItemDetails = () => {
     };
 
     fetchItemDetails();
-  }, [id, warehouseName]);
+  }, [id]);
 
   const editItem = () => {
-    navigate(
-      `/inventories/edititem/${singleItem.id}/${singleItem.warehouseName}`
-    );
+    navigate("/inventories/${singleItem.id}/edit");
   };
 
   const {
