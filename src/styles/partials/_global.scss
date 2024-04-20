@@ -75,3 +75,12 @@ td {
   vertical-align: middle;
   @include responsive-property(padding, 0, 1rem 1rem);
 }
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
