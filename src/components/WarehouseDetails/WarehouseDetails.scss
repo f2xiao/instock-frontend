@@ -29,5 +29,7 @@
   }
   &__title {
     text-transform: uppercase;
+    color: $color-text-secondary;
+    font-weight: 600;
   }
 }
