@@ -6,6 +6,9 @@
     @include responsive-property(display, block, none);
     text-transform: uppercase;
     position: relative;
+    color: $color-text-secondary;
+    font-weight: 600;
+    font-size: 0.6875rem;
   }
 
   &__first {

@@ -31,14 +31,14 @@ h4 {
   @include responsive-font(0.6875rem, 1rem, 400, 0.75rem, 1.125rem, 400);
 }
 input {
-  @include cta(17.125rem);
+  @include cta();
   padding: 0 1rem;
   border: 0.0625rem solid $color-border;
   background-color: $color-bg;
 }
 
 button {
-  @include cta(10.5rem);
+  @include cta();
   border: 0.0625rem solid $color-cta;
   color: $color-bg;
   text-transform: capitalize;
@@ -57,6 +57,7 @@ th {
   background-color: $color-bg-cta;
   padding: 1rem 1rem;
   color: $color-text-secondary;
+  font-size: 0.75rem;
 }
 
 tr {
@@ -73,11 +74,16 @@ tr {
   &:hover {
     background: rgba(46, 102, 229, 0.07);
   }
+
+  &:last-of-type {
+    border-bottom: none;
+  }
 }
 td {
   flex-basis: 40%;
   vertical-align: middle;
   @include responsive-property(padding, 0, 1rem 1rem);
+  min-width: 117px;
 }
 
 ul,

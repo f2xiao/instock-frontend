@@ -1,30 +1,50 @@
 import "./InventoryEditPage.scss";
 import backArrow from "../../assets/icons/arrow_back-24px.svg"
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { API_URL } from "../../utils/api";
+import InventoryForm from "../../components/InventoryForm/InventoryForm";
 
 const InventoryEditPage = () => {
 
   const navigate = useNavigate();
-  const { inventoryId } = useParams();
+  const { id } = useParams();
+  const [warehouseList, setWarehouseList] = useState([]);
+
+  const fetchWarehouseList = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/api/warehouses`);
+      if (response.status === 200) {
+        setWarehouseList(response.data);
+      }
+    } catch (error) {
+      console.log('Error while fetch warehouse list');
+    }
+  };
+
+  useEffect(() => {
+    fetchWarehouseList();
+  }, []);
+
   const handleBackClick = () => {
     navigate('/inventories');
   }
 
-  return <div>
-    <div>
-      <img src={backArrow} onClick={handleBackClick}></img>
-      Edit Inventory Item
-    </div>
-    <div>
-      <div>
-        Item Details
-      </div>
-      <div>
-        Item Availability
-      </div>
-    </div>
-
-  </div>;
+  return (
+    <>
+      <h1 className='add__title'>
+        <img className='add__return' src={backArrow} onClick={handleBackClick} alt="return to the main page" />
+        Edit Inventory Item
+      </h1>
+      <InventoryForm
+        id={id}
+        action='Edit'
+        warehouseList={warehouseList}
+        handleBackClick={handleBackClick}
+      />
+    </>
+  );
 };
 
 export default InventoryEditPage;
