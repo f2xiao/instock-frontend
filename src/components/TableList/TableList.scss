@@ -9,7 +9,12 @@
       align-items: center;
       justify-content: space-between;
     }
-    @include responsive-property(padding, $padding-m, $padding-t, $padding-d);
+    @include responsive-property(
+      padding,
+      $padding-m 0,
+      $padding-t 0,
+      $padding-d 0
+    );
   }
   &__form {
     @include flex;
