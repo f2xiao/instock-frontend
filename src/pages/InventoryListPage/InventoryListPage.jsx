@@ -11,6 +11,10 @@ const InventoryListPage = () => {
         title="Inventories"
         ctaText="+ Add New Item"
       />
+      <div className="empty"></div>
+      <div className="footer">
+        <p className="footer__text">© InStock Inc. All Rights Reserved.</p>
+      </div>
     </div>
   );
 };
