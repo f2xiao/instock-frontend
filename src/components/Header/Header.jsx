@@ -24,7 +24,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                to="/inventory"
+                to="/inventories"
                 className="navbar__link navbar__inventory--active"
               >
                 Inventory

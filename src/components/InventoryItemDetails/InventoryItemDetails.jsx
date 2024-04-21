@@ -4,6 +4,7 @@ import axios from "axios";
 import Edit from "../../assets/icons/edit-24px.svg";
 import Arrow from "../../assets/icons/arrow_back-24px.svg";
 import "./InventoryItemDetails.scss";
+import { API_URL } from "../../utils/api";
 
 const ItemDetails = () => {
   const [singleItem, setSingleItem] = useState({
@@ -22,9 +23,7 @@ const ItemDetails = () => {
   useEffect(() => {
     const fetchItemDetails = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:8080/inventories/${id}`
-        );
+        const response = await axios.get(`${API_URL}/api/inventories/${id}`);
 
         setSingleItem(response.data);
       } catch (error) {
@@ -36,7 +35,7 @@ const ItemDetails = () => {
   }, [id]);
 
   const editItem = () => {
-    navigate("/inventories/${singleItem.id}/edit");
+    navigate(`/inventories/${singleItem.id}/edit`);
   };
 
   const {
@@ -51,7 +50,7 @@ const ItemDetails = () => {
   return (
     <section className="item-details">
       <div className="item-details__header">
-        <Link to="/inventory" className="item-details__header-arrow">
+        <Link to="/inventories" className="item-details__header-arrow">
           <img src={Arrow} alt="Back arrow" />
         </Link>
         <h1 className="item-details__header-title">{itemName}</h1>
