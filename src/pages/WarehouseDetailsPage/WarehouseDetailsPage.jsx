@@ -1,6 +1,6 @@
 import "./WarehouseDetailsPage.scss";
 import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
-import DeatilsHeader from "../../components/DetailsHeader/DetailsHeader";
+import PageTitle from "../../components/PageTitle/PageTitle";
 import Table from "../../components/Table/Table";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -25,7 +25,7 @@ const WarehouseDetailsPage = () => {
     };
 
     fetchWarehouse();
-  }, []);
+  }, [id]);
 
   if (isFetching) {
     return (
@@ -40,13 +40,17 @@ const WarehouseDetailsPage = () => {
   return (
     <div className="warehouse-details-page">
       <div className="warehouse-details-page__info">
-        <DeatilsHeader title={warehouse.warehouse_name} linkUrl="/warehouses" />
+        <PageTitle
+          title={warehouse.warehouse_name}
+          backLink="/warehouses"
+          editLink={`/warehouses/${id}/edit`}
+        />
         <WarehouseDetails warehouse={warehouse} />
       </div>
       <Table
         type="inventories"
         headers={headers}
-        warehouseInventories
+        warehouseInventories={true}
         id={id}
       />
     </div>
