@@ -116,7 +116,7 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false }) => {
   return (
     <>
       <table className="table">
-        <thead>
+        <thead className="table__top">
           <tr>
             {headers.map((header) => (
               <th
@@ -142,7 +142,7 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false }) => {
               <td className="table__cta">
                 <img
                   alt="delete icon"
-                  className="table__icon"
+                  className="table__icon table__icon--first"
                   src={deleteIcon}
                   onClick={() => {
                     handleItemDeleteClick(item);

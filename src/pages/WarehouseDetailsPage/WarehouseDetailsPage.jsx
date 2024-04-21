@@ -47,12 +47,14 @@ const WarehouseDetailsPage = () => {
         />
         <WarehouseDetails warehouse={warehouse} />
       </div>
-      <Table
-        type="inventories"
-        headers={headers}
-        warehouseInventories={true}
-        id={id}
-      />
+      <div className="warehouse-details-page__inventories">
+        <Table
+          type="inventories"
+          headers={headers}
+          warehouseInventories={true}
+          id={id}
+        />
+      </div>
     </div>
   );
 };

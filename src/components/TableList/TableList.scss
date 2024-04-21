@@ -9,7 +9,8 @@
       align-items: center;
       justify-content: space-between;
     }
-    @include responsive-property(padding, $padding-m, $padding-t, $padding-d);
+    @include responsive-property(padding, 1.5rem 0, $padding-t 0, $padding-d 0);
+    @include responsive-property(border-bottom, 1px solid $color-border, none);
   }
   &__form {
     @include flex;
@@ -18,13 +19,47 @@
     @include responsive-property(flex-wrap, wrap, nowrap);
 
     @include responsive-property(padding-top, 1rem, 0);
+
+    @include tablet {
+      width: 60%;
+      justify-content: flex-end;
+    }
+  }
+
+  &__search {
+    // @include responsive-property(flex-grow, 1, 0);
+    position: relative;
+
+    @include flex;
+    gap: 1rem;
+    @include responsive-property(width, 100%, 100%);
+    @include responsive-property(max-width, none, 100%);
+  }
+
+  &__input {
+    width: 100%;
+    &::placeholder {
+      text-transform: capitalize;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
   }
 
   &__cta {
-    @include cta(auto);
+    @include cta(none);
     background: $color-cta;
     color: $color-bg;
+    padding: 0 1rem;
     @include responsive-property(line-height, 36px, 38px);
+
     text-align: center;
+    @include tablet {
+      max-width: 11.5rem;
+    }
   }
 }
