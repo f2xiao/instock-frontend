@@ -38,14 +38,8 @@ const ItemDetails = () => {
     navigate(`/inventories/${singleItem.id}/edit`);
   };
 
-  const {
-    itemName,
-    description,
-    category,
-    status,
-    quantity,
-    warehouseName: itemWarehouseName,
-  } = singleItem;
+  const { item_name, description, category, status, quantity, warehouse_name } =
+    singleItem;
 
   return (
     <section className="item-details">
@@ -53,7 +47,7 @@ const ItemDetails = () => {
         <Link to="/inventories" className="item-details__header-arrow">
           <img src={Arrow} alt="Back arrow" />
         </Link>
-        <h1 className="item-details__header-title">{itemName}</h1>
+        <h1 className="item-details__header-title">{item_name}</h1>
         <button className="item-details__header-button" onClick={editItem}>
           <img
             className="item-details__header-button-icon"
@@ -93,7 +87,7 @@ const ItemDetails = () => {
           <div className="item-details__logistics-warehouse">
             <h3 className="item-details__logistics-header">WAREHOUSE:</h3>
             <p className="item-details__logistics-description">
-              {itemWarehouseName}
+              {warehouse_name}
             </p>
           </div>
         </div>
