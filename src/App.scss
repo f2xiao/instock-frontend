@@ -1,2 +1,17 @@
 @use "styles/partials/global" as *;
 @use "styles/partials/mixins" as *;
+@use "styles/partials/variables" as *;
+.app {
+  position: relative;
+  &__main {
+    border: 1px solid $color-border;
+    position: absolute;
+    background-color: $color-bg;
+    top: 8.5rem;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+
+    @include responsive-margin;
+  }
+}

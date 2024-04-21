@@ -11,9 +11,13 @@ import InventoryDetailsPage from "./pages/InventoryDetailsPage/InventoryDetailsP
 import InventoryEditPage from "./pages/InventoryEditPage/InventoryEditPage.jsx";
 import InventoryAddPage from "./pages/InventoryAddPage/InventoryAddPage.jsx";
 
+import Header from "./components/Header/Header.jsx";
+import Footer from "./components/Footer/Footer.jsx";
+
 function App() {
   return (
     <BrowserRouter className="app">
+      <Header />
       <Routes>
         <Route path="/" element={<WarehouseListPage />} />
         <Route path="warehouses" element={<WarehouseListPage />} />
@@ -26,6 +30,7 @@ function App() {
         <Route path="inventories/add" element={<InventoryAddPage />} />
         <Route path="*" element={<div>Not Found 404 🥲</div>} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom"; // Import NavLink
-import logo from "../../logo/InStock-Logo_2x.png";
-import "./header.scss";
+import logo from "../../assets/logo/InStock-Logo.svg";
+import "./Header.scss";
 
 const Header = () => {
   return (
@@ -24,7 +24,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                to="/inventory"
+                to="/inventories"
                 className="navbar__link navbar__inventory--active"
               >
                 Inventory
