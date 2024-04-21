@@ -14,8 +14,14 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false }) => {
   const [data, setData] = useState([]);
   const [itemToDelete, setItemToDelete] = useState();
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
-  const [url, setUrl] = useState(`${API_URL}/api/${type}`);
   const { id } = useParams();
+  const [url, setUrl] = useState(
+    `${
+      id
+        ? `${API_URL}/api/warehouses/${id}/inventories`
+        : `${API_URL}/api/${type}`
+    }`
+  );
 
   const fetchData = async (url) => {
     const response = await axios.get(url);
@@ -23,12 +29,8 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false }) => {
   };
 
   useEffect(() => {
-    console.log(url, id);
-    if (id && type === "inventories") {
-      setUrl(`${API_URL}/api/warehouses/${id}/inventories`);
-      fetchData(url);
-    }
     console.log(url);
+
     fetchData(url);
   }, [url, id, type]);
 
@@ -112,6 +114,10 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false }) => {
       window.scrollTo(0, 0);
     }
   }, [openDeleteModal]);
+
+  if (!url) {
+    return <p>...Loading Warehouse Details...</p>;
+  }
 
   return (
     <>
