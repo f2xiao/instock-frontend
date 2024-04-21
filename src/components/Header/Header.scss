@@ -3,7 +3,7 @@
 @use "../../styles/partials/variables" as *;
 
 .navbar {
-  height: 12.5rem;
+  height: 10rem;
   display: flex;
   background-color: $color-bg-nav;
   padding-bottom: 4rem;
@@ -80,7 +80,9 @@
   font-size: $p2-mobile-fontsize;
   text-decoration: none;
 }
-.navbar__link:hover {
+.navbar__link:hover,
+.navbar__link:focus,
+.navbar__link:active {
   font-weight: bold;
   background-color: $color-text;
   border-radius: 30px;
