@@ -1,12 +1,7 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 .page-title {
-  @include responsive-property(
-    padding,
-    $padding-m 0,
-    $padding-t 0,
-    $padding-d 0
-  );
+  @include responsive-property(padding, $padding-m, $padding-t, $padding-d);
   border-bottom: 1px solid $color-border;
   @include flex;
   justify-content: space-between;

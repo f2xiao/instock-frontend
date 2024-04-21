@@ -2,6 +2,7 @@ import "./TableList.scss";
 import Table from "../../components/Table/Table";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import searchIcon from "../../assets/icons/search-24px.svg";
 
 const TableList = ({ headers, type, title, ctaText }) => {
   const [searchTerm, setSearchTerm] = useState();
@@ -16,11 +17,19 @@ const TableList = ({ headers, type, title, ctaText }) => {
       <div className="table-list__header">
         <h1>{title}</h1>
         <form className="table-list__form">
-          <input
-            type="search"
-            placeholder="Search..."
-            onChange={handleSearch}
-          />
+          <div className="table-list__search">
+            <img
+              className="table-list__icon"
+              src={searchIcon}
+              alt="search icon"
+            />
+            <input
+              className="table-list__input"
+              type="search"
+              placeholder="Search..."
+              onChange={handleSearch}
+            />
+          </div>
           <Link className="table-list__cta" to={`/${type}/add`}>
             {ctaText}
           </Link>

@@ -20,11 +20,37 @@
     @include responsive-property(padding-top, 1rem, 0);
   }
 
+  &__search {
+    // @include responsive-property(flex-grow, 1, 0);
+    position: relative;
+
+    @include flex;
+    gap: 1rem;
+    @include responsive-property(width, 100%, 100%);
+    @include responsive-property(max-width, none, 11.5625rem, 17.125rem);
+  }
+
+  &__input {
+    width: 100%;
+    &::placeholder {
+      text-transform: capitalize;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+  }
+
   &__cta {
-    @include cta(auto);
+    @include cta(none);
     background: $color-cta;
     color: $color-bg;
+    padding: 0 1rem;
     @include responsive-property(line-height, 36px, 38px);
+    // width: 100%;
     text-align: center;
   }
 }
