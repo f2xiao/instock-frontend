@@ -4,20 +4,6 @@
 @import "../../styles/partials/variables";
 
 .item-details {
-  display: flex;
-  flex-direction: column;
-  width: 876px;
-  width: auto;
-  background: $color-bg;
-  box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
-  border-radius: 3px;
-  position: absolute;
-  left: 4.5%;
-  right: 4.5%;
-  top: 16%;
-  width: stretch;
-  top: 140px;
-  margin: 0 17px 100px 17px;
   &__header {
     display: flex;
     flex-direction: row;

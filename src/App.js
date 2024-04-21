@@ -18,18 +18,20 @@ function App() {
   return (
     <BrowserRouter className="app">
       <Header />
-      <Routes>
-        <Route path="/" element={<WarehouseListPage />} />
-        <Route path="warehouses" element={<WarehouseListPage />} />
-        <Route path="warehouses/:id" element={<WarehouseDetailsPage />} />
-        <Route path="warehouses/:id/edit" element={<WarehouseEditPage />} />
-        <Route path="warehouses/add" element={<WarehouseAddPage />} />
-        <Route path="inventories" element={<InventoryListPage />} />
-        <Route path="inventories/:id" element={<InventoryDetailsPage />} />
-        <Route path="inventories/:id/edit" element={<InventoryEditPage />} />
-        <Route path="inventories/add" element={<InventoryAddPage />} />
-        <Route path="*" element={<div>Not Found 404 🥲</div>} />
-      </Routes>
+      <main className="app__main">
+        <Routes>
+          <Route path="/" element={<WarehouseListPage />} />
+          <Route path="warehouses" element={<WarehouseListPage />} />
+          <Route path="warehouses/:id" element={<WarehouseDetailsPage />} />
+          <Route path="warehouses/:id/edit" element={<WarehouseEditPage />} />
+          <Route path="warehouses/add" element={<WarehouseAddPage />} />
+          <Route path="inventories" element={<InventoryListPage />} />
+          <Route path="inventories/:id" element={<InventoryDetailsPage />} />
+          <Route path="inventories/:id/edit" element={<InventoryEditPage />} />
+          <Route path="inventories/add" element={<InventoryAddPage />} />
+          <Route path="*" element={<div>Not Found 404 🥲</div>} />
+        </Routes>
+      </main>
       <Footer />
     </BrowserRouter>
   );
