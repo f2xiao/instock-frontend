@@ -1,5 +1,4 @@
 import "./Table.scss";
-
 import Row from "../../components/Row/Row";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
@@ -8,10 +7,10 @@ import sortIcon from "../../assets/icons/sort-24px.svg";
 import axios from "axios";
 import { API_URL } from "../../utils/api";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-
-const Table = ({ type, headers, warehouseInventories = false }) => {
+import { useParams, useNavigate, Link } from "react-router-dom";
+const Table = ({ type, headers, searchTerm, warehouseInventories = false }) => {
+  const navigate = useNavigate();
+  const [isAsc, setIsAsc] = useState(false);
   const [data, setData] = useState([]);
   const [itemToDelete, setItemToDelete] = useState();
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -33,6 +32,12 @@ const Table = ({ type, headers, warehouseInventories = false }) => {
 
     fetchData(url);
   }, [url, id, type]);
+
+  useEffect(() => {
+    const params = searchTerm ? `?s=${searchTerm}` : "";
+    let urlWithParams = `${url}${params}`;
+    fetchData(urlWithParams);
+  }, [searchTerm]);
 
   const handleCancelClick = () => {
     setOpenDeleteModal(false);
@@ -56,13 +61,74 @@ const Table = ({ type, headers, warehouseInventories = false }) => {
     setOpenDeleteModal(true);
   };
 
+  const handleEditClick = (id) => {
+    navigate(`/${type}/${id}/edit`);
+  };
+
+  const handleColumnSorting = async (event) => {
+    setIsAsc(!isAsc);
+    let columnName = event.target.innerText
+      ? event.target.innerText
+      : event.target.parentElement.innerText;
+    let sortBy = "";
+    if (type === "warehouses") {
+      if (columnName.toLowerCase() === "warehouse") {
+        sortBy = "warehouse_name";
+      } else if (columnName.toLowerCase() === "address") {
+        sortBy = "address";
+      } else if (columnName.toLowerCase() === "contact name") {
+        sortBy = "contact_name";
+      } else if (columnName.toLowerCase() === "contact information") {
+        sortBy = "contact_phone";
+      }
+    } else if (type === "inventories") {
+      if (columnName.toLowerCase() === "warehouse") {
+        sortBy = "warehouse_name";
+      } else if (columnName.toLowerCase() === "inventory item") {
+        sortBy = "item_name";
+      } else if (columnName.toLowerCase() === "category") {
+        sortBy = "category";
+      } else if (columnName.toLowerCase() === "status") {
+        sortBy = "status";
+      } else if (columnName.toLowerCase() === "quantity") {
+        sortBy = "quantity";
+      }
+    }
+
+    let params = searchTerm ? `?s=${searchTerm}` : "";
+    params += params
+      ? sortBy
+        ? `&sort_by=${sortBy}`
+        : ""
+      : sortBy
+      ? `?sort_by=${sortBy}`
+      : "";
+    params += params
+      ? `&order_by=${isAsc ? "asc" : "desc"}`
+      : `?order_by=${isAsc ? "asc" : "desc"}`;
+    const response = await axios.get(`${API_URL}/api/${type}${params}`);
+    setData(response.data);
+  };
+
+  useEffect(() => {
+    if (openDeleteModal) {
+      const modalDiv = document.getElementById("delete-modal");
+      modalDiv.style.height = document.body.clientHeight + "px";
+      window.scrollTo(0, 0);
+    }
+  }, [openDeleteModal]);
+
   return (
     <>
       <table className="table">
         <thead>
           <tr>
             {headers.map((header) => (
-              <th key={header} className="table__header">
+              <th
+                key={header}
+                className="table__header"
+                onClick={handleColumnSorting}
+              >
                 {header}
                 <img className="table__sort" src={sortIcon} alt="sort icon" />
               </th>

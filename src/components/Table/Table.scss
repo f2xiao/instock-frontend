@@ -2,12 +2,15 @@
 @use "../../styles/partials/mixins" as *;
 
 .table {
+
   &__header {
     position: relative;
+    cursor: pointer;
   }
 
   &__sort {
     position: absolute;
+    cursor: pointer;
   }
 
   &__actions {
@@ -27,7 +30,6 @@
     &:first-of-type {
       margin-right: 1rem;
     }
-
     cursor: pointer;
   }
 }
