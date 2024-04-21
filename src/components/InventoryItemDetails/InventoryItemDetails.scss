@@ -1,0 +1,173 @@
+@import "../../styles/partials/global";
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/typography";
+@import "../../styles/partials/variables";
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+  width: 876px;
+  width: auto;
+  background: $color-bg;
+  box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+  border-radius: 3px;
+  position: absolute;
+  left: 4.5%;
+  right: 4.5%;
+  top: 16%;
+  width: stretch;
+  top: 140px;
+  margin: 0 17px 100px 17px;
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-bottom: 0.5px solid $color-border;
+    padding: 15px 7%;
+    margin: 0;
+    @include tablet {
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 4%;
+      margin: 0;
+    }
+    &-arrow {
+      padding-right: 2%;
+    }
+    &-title {
+      font-weight: 600;
+      color: $color-text;
+      margin: 12px 0;
+
+      @include tablet {
+        margin: 10px 0 0 0;
+      }
+    }
+    &-button {
+      align-self: center;
+      margin-left: auto;
+      background-color: $color-cta;
+      border-radius: 20px;
+      width: 36px;
+      height: 36px;
+      @include tablet {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 15%;
+      }
+      &-icon {
+        width: 15px;
+        height: 15px;
+        // color: $color-bg;
+        filter: brightness(4) sepia(0) hue-rotate(0deg) saturate(0);
+      }
+      &-text {
+        display: none;
+        color: $color-bg;
+        @include tablet {
+          display: flex;
+          flex-direction: row;
+          margin: 0;
+        }
+      }
+    }
+  }
+  &__container {
+    padding: 5%;
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+  &__description {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      width: 50%;
+    }
+    &-header {
+      color: $color-text-secondary;
+      margin-bottom: 0.75%;
+    }
+    &-description {
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 5%;
+      color: $color-text;
+      font-weight: 100;
+      width: 95%;
+      font-size: $p2-mobile-fontsize;
+      @include tablet {
+        width: 85%;
+      }
+    }
+  }
+  &__line {
+    @include tablet {
+      border-right: 0.5px solid $color-border;
+      position: absolute;
+      top: 40%;
+      left: 45%;
+      bottom: 5%;
+    }
+  }
+  &__logistics {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      width: 50%;
+      padding-left: 5%;
+    }
+    &-amount {
+      display: flex;
+      flex-direction: row;
+      &-status {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        @include tablet {
+          width: 100%;
+        }
+      }
+      &-quantity {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+      }
+    }
+    &-header {
+      color: $color-text-secondary;
+      margin-bottom: 0.75%;
+    }
+    &-instock {
+      line-height: 16px;
+      text-transform: uppercase;
+      font-size: $p3-mobile-fontsize;
+      margin: 0;
+      color: $color-success;
+      background: rgba(21, 132, 99, 0.07);
+      padding: 3px 4px;
+      border-radius: 20px;
+      width: 35%;
+    }
+    &-outstock {
+      line-height: 16px;
+      text-transform: uppercase;
+      font-size: $p3-mobile-fontsize;
+      margin: 0;
+      color: $color-error;
+      background: rgba(132, 21, 40, 0.07);
+      padding: 3px 4px;
+      border-radius: 20px;
+      width: 50%;
+    }
+    &-description {
+      margin: 0;
+      color: $color-text;
+      font-weight: 100;
+      margin-bottom: 5%;
+    }
+  }
+}

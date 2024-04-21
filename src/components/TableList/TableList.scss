@@ -1,0 +1,22 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.table-list {
+  @include responsive-property(padding, 1rem 1.5rem, 1rem 2rem);
+  &__header {
+    @include tablet {
+      @include flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    @include responsive-property(padding, $padding-m, $padding-t, $padding-d);
+  }
+  &__form {
+    @include flex;
+    align-items: center;
+    gap: 1rem;
+    @include responsive-property(flex-wrap, wrap, nowrap);
+
+    @include responsive-property(padding-top, 1rem, 0);
+  }
+}

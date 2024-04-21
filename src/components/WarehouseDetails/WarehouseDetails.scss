@@ -1,0 +1,32 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+.warehouse {
+  padding-top: 1rem;
+  border-top: 1px solid $color-border;
+  @include flex;
+  flex-wrap: wrap;
+  &__address {
+    display: inline-block;
+    @include tablet {
+      width: 130px;
+    }
+  }
+
+  &__first {
+    @include responsive-property(padding-bottom, 2rem, 0);
+    @include responsive-property(flex-basis, 100%, 40%);
+  }
+  &__second {
+    @include responsive-property(flex-basis, 50%, 30%);
+    @include tablet {
+      padding-left: 2rem;
+      border-left: 1px solid $color-border;
+    }
+  }
+  &__third {
+    @include responsive-property(flex-basis, 50%, 30%);
+  }
+  &__title {
+    text-transform: uppercase;
+  }
+}

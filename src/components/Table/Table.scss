@@ -1,0 +1,35 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.table {
+
+  &__header {
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__sort {
+    position: absolute;
+    cursor: pointer;
+  }
+
+  &__actions {
+    text-align: right;
+  }
+  &__cta {
+    flex-basis: 100%;
+    @include flex;
+    @include tablet {
+      display: table-cell;
+    }
+    justify-content: space-between;
+    text-align: right;
+  }
+
+  &__icon {
+    &:first-of-type {
+      margin-right: 1rem;
+    }
+    cursor: pointer;
+  }
+}
