@@ -18,7 +18,7 @@
     @include responsive-property(flex-basis, 100%, 40%);
   }
   &__second {
-    @include responsive-property(flex-basis, 50%, 30%);
+    @include responsive-property(flex-basis, calc(50% - 1rem), 30%);
     @include tablet {
       padding-left: 2rem;
       border-left: 1px solid $color-border;
