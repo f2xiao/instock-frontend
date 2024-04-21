@@ -7,9 +7,9 @@ import sortIcon from "../../assets/icons/sort-24px.svg";
 import axios from "axios";
 import { API_URL } from "../../utils/api";
 import { useEffect, useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+
 const Table = ({ type, headers, searchTerm, warehouseInventories = false }) => {
-  const navigate = useNavigate();
   const [isAsc, setIsAsc] = useState(false);
   const [data, setData] = useState([]);
   const [itemToDelete, setItemToDelete] = useState();
@@ -23,13 +23,11 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false }) => {
   };
 
   useEffect(() => {
-    console.log(url);
-
+    console.log(url, id);
     if (id && type === "inventories") {
       setUrl(`${API_URL}/api/warehouses/${id}/inventories`);
     }
     console.log(url);
-
     fetchData(url);
   }, [url, id, type]);
 
@@ -59,10 +57,6 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false }) => {
   const handleItemDeleteClick = (item) => {
     setItemToDelete(item);
     setOpenDeleteModal(true);
-  };
-
-  const handleEditClick = (id) => {
-    navigate(`/${type}/${id}/edit`);
   };
 
   const handleColumnSorting = async (event) => {
