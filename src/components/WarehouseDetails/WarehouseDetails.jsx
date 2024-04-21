@@ -1,5 +1,4 @@
 import "./WarehouseDetails.scss";
-import returnIcon from "../../assets/icons/arrow_back-24px.svg";
 
 const WarehouseDetails = ({ warehouse }) => {
   const {

@@ -7,16 +7,15 @@ import sortIcon from "../../assets/icons/sort-24px.svg";
 import axios from "axios";
 import { API_URL } from "../../utils/api";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
-const Table = ({ type, headers, searchTerm, warehouseInventories = false, id = "" }) => {
-
-  const navigate = useNavigate();
+const Table = ({ type, headers, searchTerm, warehouseInventories = false }) => {
   const [isAsc, setIsAsc] = useState(false);
   const [data, setData] = useState([]);
   const [itemToDelete, setItemToDelete] = useState();
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [url, setUrl] = useState(`${API_URL}/api/${type}`);
+  const { id } = useParams();
 
   const fetchData = async (url) => {
     const response = await axios.get(url);
@@ -24,14 +23,17 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false, id = "
   };
 
   useEffect(() => {
-    if (warehouseInventories) {
+    console.log(url, id);
+    if (id && type === "inventories") {
       setUrl(`${API_URL}/api/warehouses/${id}/inventories`);
+      fetchData(url);
     }
+    console.log(url);
     fetchData(url);
-  }, []);
+  }, [url, id, type]);
 
   useEffect(() => {
-    const params = searchTerm ? `?s=${searchTerm}` : '';
+    const params = searchTerm ? `?s=${searchTerm}` : "";
     let urlWithParams = `${url}${params}`;
     fetchData(urlWithParams);
   }, [searchTerm]);
@@ -58,14 +60,12 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false, id = "
     setOpenDeleteModal(true);
   };
 
-  const handleEditClick = (id) => {
-    navigate(`/${type}/${id}/edit`);
-  };
-
   const handleColumnSorting = async (event) => {
     setIsAsc(!isAsc);
-    let columnName = event.target.innerText ? event.target.innerText : event.target.parentElement.innerText;
-    let sortBy = '';
+    let columnName = event.target.innerText
+      ? event.target.innerText
+      : event.target.parentElement.innerText;
+    let sortBy = "";
     if (type === "warehouses") {
       if (columnName.toLowerCase() === "warehouse") {
         sortBy = "warehouse_name";
@@ -90,16 +90,24 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false, id = "
       }
     }
 
-    let params = searchTerm ? `?s=${searchTerm}` : '';
-    params += params ? (sortBy ? `&sort_by=${sortBy}` : '') : (sortBy ? `?sort_by=${sortBy}` : '');
-    params += params ? `&order_by=${isAsc ? 'asc' : 'desc'}` : `?order_by=${isAsc ? 'asc' : 'desc'}`;
+    let params = searchTerm ? `?s=${searchTerm}` : "";
+    params += params
+      ? sortBy
+        ? `&sort_by=${sortBy}`
+        : ""
+      : sortBy
+      ? `?sort_by=${sortBy}`
+      : "";
+    params += params
+      ? `&order_by=${isAsc ? "asc" : "desc"}`
+      : `?order_by=${isAsc ? "asc" : "desc"}`;
     const response = await axios.get(`${API_URL}/api/${type}${params}`);
     setData(response.data);
-  }
+  };
 
   useEffect(() => {
     if (openDeleteModal) {
-      const modalDiv = document.getElementById('delete-modal');
+      const modalDiv = document.getElementById("delete-modal");
       modalDiv.style.height = document.body.clientHeight + "px";
       window.scrollTo(0, 0);
     }
@@ -111,7 +119,11 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false, id = "
         <thead>
           <tr>
             {headers.map((header) => (
-              <th key={header} className="table__header" onClick={handleColumnSorting} >
+              <th
+                key={header}
+                className="table__header"
+                onClick={handleColumnSorting}
+              >
                 {header}
                 <img className="table__sort" src={sortIcon} alt="sort icon" />
               </th>
@@ -136,7 +148,9 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false, id = "
                     handleItemDeleteClick(item);
                   }}
                 />
-                <img alt="edit icon" className="table__icon" src={editIcon} onClick={() => handleEditClick(item.id)} />
+                <Link to={`/${type}/${item.id}/edit`}>
+                  <img alt="edit icon" className="table__icon" src={editIcon} />
+                </Link>
               </td>
             </tr>
           ))}
