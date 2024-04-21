@@ -1,10 +1,12 @@
 import "./WarehouseForm.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { API_URL } from "../../utils/api";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 const WarehouseForm = ({ buttonText, cancelLink }) => {
   const navigate = useNavigate();
+  const { id } = useParams();
+
   const [warehouseDetails, setWarehouseDetails] = useState({
     warehouse_name: "",
     address: "",
@@ -53,7 +55,9 @@ const WarehouseForm = ({ buttonText, cancelLink }) => {
   };
 
   const formattedPhoneNumber = (phoneNumber) => {
-    const result = phoneNumber.toString().split("");
+    const result = phoneNumber.split("");
+    console.log(phoneNumber);
+
     return `+1 (${result.slice(0, 3).join("")}) ${result
       .slice(3, 6)
       .join("")}-${result.slice(6).join("")}`;
@@ -71,21 +75,72 @@ const WarehouseForm = ({ buttonText, cancelLink }) => {
     }
     setFormErrors(newFormErrors);
 
+    const addWarehouse = async () => {
+      const response = await axios.post(`${API_URL}/api/warehouses`, {
+        ...warehouseDetails,
+        contact_phone: formattedPhoneNumber(warehouseDetails.contact_phone),
+      });
+      return response.data;
+    };
+    const updateWarehouse = async () => {
+      const response = await axios.put(`${API_URL}/api/warehouses/${id}`, {
+        ...warehouseDetails,
+        contact_phone: formattedPhoneNumber(warehouseDetails.contact_phone),
+      });
+      return response.data;
+    };
+
     const hasErrors = Object.values(newFormErrors).some((error) => error);
     if (!hasErrors) {
+      let returnedWarehouse;
       try {
-        const response = await axios.post(`${API_URL}/api/warehouses`, {
-          ...warehouseDetails,
-          contact_phone: formattedPhoneNumber(warehouseDetails.contact_phone),
-        });
-        if (response.data) {
+        if (!id) {
+          returnedWarehouse = await addWarehouse();
+        } else {
+          returnedWarehouse = await updateWarehouse();
+        }
+        if (returnedWarehouse) {
           navigate(`/warehouses`);
         }
       } catch (error) {
-        console.error("Can't add a warehouse:", error);
+        console.error("Error:", error);
       }
     }
   };
+
+  useEffect(() => {
+    const fetchWarehouse = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/api/warehouses/${id}`);
+        console.log(response.data);
+        const {
+          warehouse_name,
+          address,
+          city,
+          country,
+          contact_name,
+          contact_position,
+          contact_phone,
+          contact_email,
+        } = response.data;
+        setWarehouseDetails({
+          warehouse_name,
+          address,
+          city,
+          country,
+          contact_name,
+          contact_position,
+          contact_phone,
+          contact_email,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    if (id) {
+      fetchWarehouse();
+    }
+  }, [id]);
 
   return (
     <div className="warehouse-form">
@@ -146,7 +201,7 @@ const WarehouseForm = ({ buttonText, cancelLink }) => {
               <label>{labelArr[6]}</label>
               <br />
               <input
-                type="number"
+                type="text"
                 name={Object.keys(warehouseDetails)[6]}
                 value={Object.values(warehouseDetails)[6]}
                 onChange={handleWarehouseChange}

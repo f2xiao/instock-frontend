@@ -26,6 +26,7 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false }) => {
     console.log(url, id);
     if (id && type === "inventories") {
       setUrl(`${API_URL}/api/warehouses/${id}/inventories`);
+      fetchData(url);
     }
     console.log(url);
     fetchData(url);
