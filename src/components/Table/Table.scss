@@ -2,6 +2,9 @@
 @use "../../styles/partials/mixins" as *;
 
 .table {
+  &__top {
+    @include responsive-property(display, none, table-header-group);
+  }
   &__header {
     position: relative;
     cursor: pointer;

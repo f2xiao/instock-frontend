@@ -116,7 +116,7 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false }) => {
   return (
     <>
       <table className="table">
-        <thead>
+        <thead className="table__top">
           <tr>
             {headers.map((header) => (
               <th
