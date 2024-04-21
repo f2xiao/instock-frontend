@@ -15,7 +15,7 @@ const WarehouseListPage = () => {
         type="warehouses"
         headers={headers}
         title="Warehouses"
-        ctaText="Add New Warehouse"
+        ctaText="+ Add New Warehouse"
       />
     </div>
   );

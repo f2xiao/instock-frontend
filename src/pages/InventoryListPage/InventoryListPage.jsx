@@ -9,7 +9,7 @@ const InventoryListPage = () => {
         type="inventories"
         headers={headers}
         title="Inventories"
-        ctaText="Add New Item"
+        ctaText="+ Add New Item"
       />
     </div>
   );

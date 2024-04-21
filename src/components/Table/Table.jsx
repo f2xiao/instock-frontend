@@ -8,12 +8,15 @@ import sortIcon from "../../assets/icons/sort-24px.svg";
 import axios from "axios";
 import { API_URL } from "../../utils/api";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Table = ({ type, headers, warehouseInventories = false, id = "" }) => {
+const Table = ({ type, headers, warehouseInventories = false }) => {
   const [data, setData] = useState([]);
   const [itemToDelete, setItemToDelete] = useState();
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [url, setUrl] = useState(`${API_URL}/api/${type}`);
+  const { id } = useParams();
 
   const fetchData = async (url) => {
     const response = await axios.get(url);
@@ -21,11 +24,15 @@ const Table = ({ type, headers, warehouseInventories = false, id = "" }) => {
   };
 
   useEffect(() => {
-    if (warehouseInventories) {
+    console.log(url);
+
+    if (id && type === "inventories") {
       setUrl(`${API_URL}/api/warehouses/${id}/inventories`);
     }
+    console.log(url);
+
     fetchData(url);
-  }, []);
+  }, [url, id, type]);
 
   const handleCancelClick = () => {
     setOpenDeleteModal(false);
@@ -80,7 +87,9 @@ const Table = ({ type, headers, warehouseInventories = false, id = "" }) => {
                     handleItemDeleteClick(item);
                   }}
                 />
-                <img alt="edit icon" className="table__icon" src={editIcon} />
+                <Link to={`/${type}/${item.id}/edit`}>
+                  <img alt="edit icon" className="table__icon" src={editIcon} />
+                </Link>
               </td>
             </tr>
           ))}

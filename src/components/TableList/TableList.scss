@@ -19,4 +19,12 @@
 
     @include responsive-property(padding-top, 1rem, 0);
   }
+
+  &__cta {
+    @include cta(auto);
+    background: $color-cta;
+    color: $color-bg;
+    @include responsive-property(line-height, 36px, 38px);
+    text-align: center;
+  }
 }

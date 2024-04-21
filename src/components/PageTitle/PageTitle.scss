@@ -1,14 +1,22 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
-.details-header {
+.page-title {
   @include responsive-property(
     padding,
     $padding-m 0,
     $padding-t 0,
     $padding-d 0
   );
+  border-bottom: 1px solid $color-border;
   @include flex;
   justify-content: space-between;
+
+  &__title {
+    text-transform: capitalize;
+  }
+  &__icon {
+    margin-right: 1rem;
+  }
 
   &__cta {
     position: relative;
