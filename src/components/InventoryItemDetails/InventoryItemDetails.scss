@@ -137,8 +137,9 @@
       padding: 3px 4px;
       border-radius: 20px;
       width: 35%;
+      font-weight: 600;
     }
-    &-outstock {
+    &-outofstock {
       line-height: 16px;
       text-transform: uppercase;
       font-size: $p3-mobile-fontsize;
@@ -147,7 +148,8 @@
       background: rgba(132, 21, 40, 0.07);
       padding: 3px 4px;
       border-radius: 20px;
-      width: 50%;
+      width: 35%;
+      font-weight: 600;
     }
     &-description {
       margin: 0;
