@@ -2,19 +2,3 @@
 @import "../../styles/partials/mixins";
 @import "../../styles/partials/typography";
 @import "../../styles/partials/variables";
-
-.footer__text {
-  font-size: $p3-mobile-fontsize;
-  background-color: $color-bg-page;
-  font-weight: normal;
-  margin: 0 auto;
-  text-align: center;
-  vertical-align: center;
-  color: $color-border;
-  padding: 40px;
-  width: stretch;
-
-  @include tablet {
-    font-size: $p3-desktab-fontsize;
-  }
-}

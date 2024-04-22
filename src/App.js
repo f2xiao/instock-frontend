@@ -18,7 +18,7 @@ function App() {
   return (
     <BrowserRouter className="app">
       <Header />
-      <main className="app__main">
+      <div className="app__main">
         <Routes>
           <Route path="/" element={<WarehouseListPage />} />
           <Route path="warehouses" element={<WarehouseListPage />} />
@@ -31,7 +31,7 @@ function App() {
           <Route path="inventories/add" element={<InventoryAddPage />} />
           <Route path="*" element={<div>Not Found 404 🥲</div>} />
         </Routes>
-      </main>
+      </div>
       <Footer />
     </BrowserRouter>
   );
