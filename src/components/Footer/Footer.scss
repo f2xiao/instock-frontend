@@ -1,0 +1,27 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+
+.footer {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  z-index: -99;
+
+  &__text {
+    font-size: $p3-mobile-fontsize;
+    background-color: $color-bg-page;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: center;
+    color: $color-border;
+    padding: $padding-m;
+    width: stretch;
+    height: stretch;
+    position: absolute;
+    bottom: 0;
+  }
+}

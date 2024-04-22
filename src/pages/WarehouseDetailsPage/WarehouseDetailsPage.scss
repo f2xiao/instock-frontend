@@ -1,0 +1,14 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+.warehouse-details-page {
+  @include responsive-property(padding, 1rem 0, 1rem 0);
+  &__info {
+    @include tablet {
+      padding-bottom: 1rem;
+    }
+  }
+
+  &__inventories {
+    @include responsive-property(padding, 0 1rem, 0 2rem);
+  }
+}

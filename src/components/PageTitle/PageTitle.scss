@@ -1,0 +1,39 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+.page-title {
+  @include responsive-property(padding, $padding-m, $padding-t, $padding-d);
+  border-bottom: 1px solid $color-border;
+  @include flex;
+  justify-content: space-between;
+
+  &__title {
+    text-transform: capitalize;
+  }
+  &__icon {
+    margin-right: 1rem;
+  }
+
+  &__cta {
+    position: relative;
+    @include responsive-property(width, auto, 6rem);
+
+    &::before {
+      content: "";
+      display: inline-block;
+      height: 20px;
+      width: 20px;
+      background: center/contain no-repeat
+        url("../../assets/icons/edit-24px-white.svg");
+      position: absolute;
+
+      @include responsive-property(top, 6px, 9px);
+      left: 0.5rem;
+    }
+    &--first {
+      @include responsive-property(display, block, none);
+    }
+    &--second {
+      @include responsive-property(display, none, block);
+    }
+  }
+}

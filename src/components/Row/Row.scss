@@ -1,0 +1,67 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.row {
+  &__header {
+    @include responsive-property(display, block, none);
+    text-transform: uppercase;
+    position: relative;
+    color: $color-text-secondary;
+    font-weight: 600;
+    font-size: 0.6875rem;
+  }
+
+  &__first {
+    color: $color-cta;
+    font-weight: 600;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__status {
+    &--mobile {
+      @include responsive-property(display, table-cell, none);
+    }
+    &--tablet {
+      @include responsive-property(display, none, table-cell);
+    }
+  }
+
+  &__tag {
+    display: inline-block;
+    @include responsive-property(height, 24px, 26px);
+    @include responsive-property(line-height, 24px, 26px);
+    padding: 0 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: $color-success;
+    background-color: rgba(21, 132, 99, 0.07);
+
+    &--error {
+      color: $color-error;
+      background-color: rgba(201, 69, 21, 0.07);
+    }
+  }
+
+  &__img {
+    position: absolute;
+    margin-left: 0.25rem;
+  }
+
+  &__address {
+    display: inline-block;
+    max-width: 100px;
+  }
+
+  &__info {
+    display: inline-block;
+    max-width: 130px;
+  }
+
+  &__warehouse {
+    @include responsive-property(color, transparent, $color-text);
+    @include responsive-property(display, table-cell, none);
+  }
+}

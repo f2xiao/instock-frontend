@@ -1,0 +1,206 @@
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+input,
+select,
+textarea {
+    border-radius: 1.25rem;
+    width: 100%;
+    max-width: none !important;
+    height: 2.25rem;
+    margin-top: .25rem;
+    border: 1px solid $color-border;
+    font-family: "Titillium Web";
+    padding-left: 1rem;
+    color: $color-text-secondary;
+
+    @include tablet {
+        height: 2.25rem;
+        width: 100%;
+    }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+textarea {
+    resize: none;
+}
+
+button {
+    height: 2.25rem;
+    border-style: solid;
+    border-color: $color-border;
+    border-radius: 1.5rem;
+    padding: 0.4rem 1rem;
+    width: 8rem;
+
+    @include tablet {
+        height: 2.38rem;
+        margin-left: 1rem;
+        width: auto;
+    }
+}
+
+label {
+    font-style: $h3-mobile-fontsize;
+    font-weight: 600;
+
+    @include tablet {
+        font-size: $h3-desktab-fontsize;
+    }
+}
+
+.form-field {
+    margin-bottom: 1rem;
+}
+
+.add {
+    padding-top: 1.5rem;
+    background-color: $color-bg-page;
+    padding-left: 5vw;
+
+    @include tablet {
+        background-color: white;
+        padding-left: 0;
+    }
+
+    &__return {
+        position: absolute;
+        left: 1rem;
+        padding-top: 0.5rem;
+    }
+
+    &__wrapper {
+        @include tablet {
+            display: flex;
+        }
+    }
+
+    &__form {
+        padding: 0 1rem;
+
+        @include tablet {
+            padding: 0;
+        }
+    }
+
+    &__section {
+        border-top: 1px solid $color-border;
+        margin-bottom: 1rem;
+
+        @include tablet {
+            width: 50%;
+            padding: 0 2rem;
+            margin-top: 2rem;
+            border: 0;
+        }
+    }
+
+    &__section1 {
+        @include tablet {
+            border-right: 1px solid $color-border;
+        }
+    }
+
+    &__sectiontitle {
+        padding: 1.5rem 0;
+
+        @include tablet {
+            padding-top: 0;
+        }
+    }
+
+    &__select {
+        font-size: 14px;
+        font-weight: 400;
+        vertical-align: middle;
+    }
+
+    &__input-red {
+        border-color: $color-error;
+    }
+
+    &__name-input{
+        width: 100% !important;
+    }
+
+    &__error {
+        color: $color-error;
+    }
+
+    &__description {
+        height: 8rem;
+        padding-top: 0.5rem;
+    }
+
+    &__arrow {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+
+    &__category {
+        appearance: none;
+        background-image: url('../../assets/icons/arrow_drop_down-24px.svg');
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+    }
+
+    ::-ms-expand {
+        display: none;
+    }
+
+    &_radio {
+        transform: scale(0.5);
+        width: 4rem;
+        vertical-align: -0.8rem;
+        margin-left: -1.4rem;
+
+    }
+
+    &_radio1 {
+        margin-left: 3rem;
+    }
+
+    &__quantity {
+        @include desktop {
+            width: 25%;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem 0rem;
+        gap: 2rem;
+
+        @include tablet {
+            background-color: $color-bg-page;
+            justify-content: end;
+            padding: 2rem;
+        }
+    }
+
+    &__cancel {
+        background-color: $color-bg;
+        color: $color-text-secondary;
+        cursor: pointer;
+    }
+
+    &__save {
+        color: $color-bg;
+        background-color: $color-cta;
+        border-color: $color-cta;
+        cursor: pointer;
+    }
+}

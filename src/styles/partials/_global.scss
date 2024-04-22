@@ -1,0 +1,96 @@
+@use "typography" as *;
+@use "variables" as *;
+@use "mixins" as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Titillium Web", Helvetica, sans-serif;
+  color: $color-text;
+  background: $color-bg;
+  @include responsive-font(0.8125rem, 1.25rem, 400, 0.875rem, 1.375rem, 400);
+}
+
+h1 {
+  @include responsive-font(1.75rem, 2.25rem, 600, 2rem, 2.5rem, 600);
+}
+
+h2 {
+  @include responsive-font(1.25rem, 1.75rem, 600, 1.5rem, 2rem, 600);
+}
+
+h3 {
+  @include responsive-font(0.8125rem, 1.25rem, 600, 0.875rem, 1.375rem, 600);
+}
+
+h4 {
+  @include responsive-font(0.6875rem, 1rem, 400, 0.75rem, 1.125rem, 400);
+}
+input {
+  @include cta();
+  padding: 0 1rem;
+  border: 0.0625rem solid $color-border;
+  background-color: $color-bg;
+}
+
+button {
+  @include cta();
+  border: 0.0625rem solid $color-cta;
+  color: $color-bg;
+  text-transform: capitalize;
+  padding: 0.5rem 1rem;
+  background: $color-cta;
+  vertical-align: middle;
+}
+
+table {
+  width: 100%;
+}
+th {
+  text-align: left;
+  text-transform: uppercase;
+  @include responsive-property(display, none, table-cell);
+  background-color: $color-bg-cta;
+  padding: 1rem 1rem;
+  color: $color-text-secondary;
+  font-size: 0.75rem;
+}
+
+tr {
+  @include flex;
+  flex-wrap: wrap;
+
+  @include tablet {
+    display: table-row;
+  }
+  border-bottom: 1px solid $color-border;
+
+  @include responsive-property(padding, 1rem 0, 0);
+
+  &:hover {
+    background: rgba(46, 102, 229, 0.07);
+  }
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+td {
+  flex-basis: 47%;
+  vertical-align: middle;
+  @include responsive-property(padding, 0, 1rem 1rem);
+  min-width: 117px;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
