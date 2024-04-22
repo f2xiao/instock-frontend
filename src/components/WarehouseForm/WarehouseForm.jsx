@@ -55,8 +55,12 @@ const WarehouseForm = ({ buttonText, cancelLink }) => {
   };
 
   const formattedPhoneNumber = (phoneNumber) => {
+    const regex = /\+\d{1}\s\(\d{3}\)\s\d{3}-\d{4}/;
+    if (regex.test(phoneNumber)) {
+      return phoneNumber;
+    }
     const result = phoneNumber.split("");
-    console.log(phoneNumber);
+    // console.log(phoneNumber);
 
     return `+1 (${result.slice(0, 3).join("")}) ${result
       .slice(3, 6)

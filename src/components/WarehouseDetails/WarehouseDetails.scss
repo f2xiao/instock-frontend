@@ -3,7 +3,6 @@
 .warehouse {
   padding: 1rem;
   @include responsive-property(padding, 1rem, 1rem 2rem);
-  border-top: 1px solid $color-border;
   @include flex;
   flex-wrap: wrap;
   &__address {
@@ -25,7 +24,7 @@
     }
   }
   &__third {
-    @include responsive-property(flex-basis, 50%, 30%);
+    @include responsive-property(flex-basis, calc(50% - 1rem), 30%);
   }
   &__title {
     text-transform: uppercase;
