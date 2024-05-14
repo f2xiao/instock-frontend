@@ -5,7 +5,6 @@ import editIcon from "../../assets/icons/edit-24px.svg";
 import DeleteComponent from "../DeleteComponent/DeleteComponent";
 import sortIcon from "../../assets/icons/sort-24px.svg";
 import axios from "axios";
-import { API_URL } from "../../utils/api";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
@@ -18,8 +17,8 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false }) => {
   const [url, setUrl] = useState(
     `${
       id
-        ? `${API_URL}/api/warehouses/${id}/inventories`
-        : `${API_URL}/api/${type}`
+        ? `${process.env.API_URL}/api/warehouses/${id}/inventories`
+        : `${process.env.API_URL}/api/${type}`
     }`
   );
 
@@ -46,7 +45,9 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false }) => {
 
   const handleDeleteClick = async (id) => {
     try {
-      const response = await axios.delete(`${API_URL}/api/${type}/${id}`);
+      const response = await axios.delete(
+        `${process.env.API_URL}/api/${type}/${id}`
+      );
       if (response.status === 204) {
         fetchData(url);
         setOpenDeleteModal(false);
@@ -103,7 +104,9 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false }) => {
     params += params
       ? `&order_by=${isAsc ? "asc" : "desc"}`
       : `?order_by=${isAsc ? "asc" : "desc"}`;
-    const response = await axios.get(`${API_URL}/api/${type}${params}`);
+    const response = await axios.get(
+      `${process.env.API_URL}/api/${type}${params}`
+    );
     setData(response.data);
   };
 
