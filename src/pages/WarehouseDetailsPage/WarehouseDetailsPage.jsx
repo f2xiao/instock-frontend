@@ -5,7 +5,6 @@ import Table from "../../components/Table/Table";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { API_URL } from "../../utils/api";
 
 const WarehouseDetailsPage = () => {
   const { id } = useParams();
@@ -15,7 +14,9 @@ const WarehouseDetailsPage = () => {
   useEffect(() => {
     const fetchWarehouse = async () => {
       try {
-        const response = await axios.get(`${API_URL}/api/warehouses/${id}`);
+        const response = await axios.get(
+          `${process.env.API_URL}/api/warehouses/${id}`
+        );
         console.log(response.data);
         setWarehouse(response.data);
         setIsFetching(false);
