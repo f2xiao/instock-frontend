@@ -15,7 +15,7 @@ const WarehouseDetailsPage = () => {
     const fetchWarehouse = async () => {
       try {
         const response = await axios.get(
-          `${process.env.API_URL}/api/warehouses/${id}`
+          `${process.env.REACT_APP_API_URL}/api/warehouses/${id}`
         );
         console.log(response.data);
         setWarehouse(response.data);

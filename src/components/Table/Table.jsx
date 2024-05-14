@@ -17,8 +17,8 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false }) => {
   const [url, setUrl] = useState(
     `${
       id
-        ? `${process.env.API_URL}/api/warehouses/${id}/inventories`
-        : `${process.env.API_URL}/api/${type}`
+        ? `${process.env.REACT_APP_API_URL}/api/warehouses/${id}/inventories`
+        : `${process.env.REACT_APP_API_URL}/api/${type}`
     }`
   );
 
@@ -46,7 +46,7 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false }) => {
   const handleDeleteClick = async (id) => {
     try {
       const response = await axios.delete(
-        `${process.env.API_URL}/api/${type}/${id}`
+        `${process.env.REACT_APP_API_URL}/api/${type}/${id}`
       );
       if (response.status === 204) {
         fetchData(url);
@@ -105,7 +105,7 @@ const Table = ({ type, headers, searchTerm, warehouseInventories = false }) => {
       ? `&order_by=${isAsc ? "asc" : "desc"}`
       : `?order_by=${isAsc ? "asc" : "desc"}`;
     const response = await axios.get(
-      `${process.env.API_URL}/api/${type}${params}`
+      `${process.env.REACT_APP_API_URL}/api/${type}${params}`
     );
     setData(response.data);
   };
