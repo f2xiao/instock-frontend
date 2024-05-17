@@ -4,7 +4,6 @@ import axios from "axios";
 import Edit from "../../assets/icons/edit-24px.svg";
 import Arrow from "../../assets/icons/arrow_back-24px.svg";
 import "./InventoryItemDetails.scss";
-import { API_URL } from "../../utils/api";
 
 const ItemDetails = () => {
   const [singleItem, setSingleItem] = useState({
@@ -23,7 +22,9 @@ const ItemDetails = () => {
   useEffect(() => {
     const fetchItemDetails = async () => {
       try {
-        const response = await axios.get(`${API_URL}/api/inventories/${id}`);
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/inventories/${id}`
+        );
 
         setSingleItem(response.data);
       } catch (error) {

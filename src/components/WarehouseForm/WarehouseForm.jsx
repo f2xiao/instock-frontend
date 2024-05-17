@@ -1,7 +1,6 @@
 import "./WarehouseForm.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { API_URL } from "../../utils/api";
 import { Link, useNavigate, useParams } from "react-router-dom";
 const WarehouseForm = ({ buttonText, cancelLink }) => {
   const navigate = useNavigate();
@@ -80,17 +79,23 @@ const WarehouseForm = ({ buttonText, cancelLink }) => {
     setFormErrors(newFormErrors);
 
     const addWarehouse = async () => {
-      const response = await axios.post(`${API_URL}/api/warehouses`, {
-        ...warehouseDetails,
-        contact_phone: formattedPhoneNumber(warehouseDetails.contact_phone),
-      });
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/warehouses`,
+        {
+          ...warehouseDetails,
+          contact_phone: formattedPhoneNumber(warehouseDetails.contact_phone),
+        }
+      );
       return response.data;
     };
     const updateWarehouse = async () => {
-      const response = await axios.put(`${API_URL}/api/warehouses/${id}`, {
-        ...warehouseDetails,
-        contact_phone: formattedPhoneNumber(warehouseDetails.contact_phone),
-      });
+      const response = await axios.put(
+        `${process.env.REACT_APP_API_URL}/api/warehouses/${id}`,
+        {
+          ...warehouseDetails,
+          contact_phone: formattedPhoneNumber(warehouseDetails.contact_phone),
+        }
+      );
       return response.data;
     };
 
@@ -115,7 +120,9 @@ const WarehouseForm = ({ buttonText, cancelLink }) => {
   useEffect(() => {
     const fetchWarehouse = async () => {
       try {
-        const response = await axios.get(`${API_URL}/api/warehouses/${id}`);
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/warehouses/${id}`
+        );
         console.log(response.data);
         const {
           warehouse_name,
