@@ -3,6 +3,8 @@
 @use "styles/partials/variables" as *;
 .app {
   position: relative;
+  min-height: 100vh;
+  @include flex-cross-center(column);
   &__main {
     background-color: $color-bg;
     top: 8.5rem;
@@ -18,5 +20,13 @@
     width: -webkit-fill-available;
     width: -moz-available;
     width: stretch;
+  }
+
+  &__empty {
+    flex-grow: 1;
+  }
+
+  &__footer {
+    margin-bottom: 1rem;
   }
 }
